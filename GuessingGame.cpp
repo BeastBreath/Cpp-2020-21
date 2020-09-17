@@ -35,23 +35,23 @@ int main()
   bool play = true;//boolean for if the game is being played
   while(play)
   {
-    cout << "Try to guess the number!" << endl;
     int guesses = 0;
+    cout << "Try to guess the number!" << endl;
     while(input != randomNumber)//While the guess isn't correct
     {
       cin >> input;
       guesses++;
       if(input > randomNumber)//If the guess is too high
       {
-	cout << "Your guess is too high" << endl;
+        cout << "Your guess is too high" << endl;
       }
       else if(input < randomNumber)//If the guess is too low
       {
-	cout << "Your guess is too low" << endl;
+        cout << "Your guess is too low" << endl;
       }
       else//If the guess is correct
       {
-      cout << "You are Correct! You took " << guesses << " guesses!" << endl;
+        cout << "You are Correct! You took " << guesses << " guesses!" << endl;
       }
     }
     if(checkIfPlayAgain() == false)//Check if player wants to play again
