@@ -26,7 +26,8 @@ bool checkIfPlayAgain()
 
 int main()
 {
-  int randomNumber = 5;
+  srand(time(NULL));
+  int randomNumber = rand()%101;
   int input = -1;
   bool play = true;
   while(play)
@@ -35,6 +36,18 @@ int main()
     while(input != randomNumber)
     {
       cin >> input;
+      if(input > randomNumber)
+      {
+	cout << "Your guess is too high" << endl;
+      }
+      else if(input < randomNumber)
+      {
+	cout << "Your guess is too low" << endl;
+      }
+      else
+      {
+      cout << "You are Correct!" << endl;
+      }
     }
     if(checkIfPlayAgain() == false)
     {
