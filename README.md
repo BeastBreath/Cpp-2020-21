@@ -1,2 +1,2 @@
-# GuessingGame
-A random number is chosen, and the user tries to guess it. Programmed in c++
+Programs for C++ at Sunset High School during quarter 1
+Programs are made by Nividh Singh
