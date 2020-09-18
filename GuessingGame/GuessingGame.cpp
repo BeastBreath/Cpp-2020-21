@@ -1,3 +1,8 @@
+/*
+Created by Nividh Singh on 9/15/20
+Program gets a random numer 0-100 inclusive, and the user tries to guess the number. The computer tells the user if the guess is too big or too small, or if the user guessed it. If the user guesses it, the user has the option to play again or quit
+*/
+
 #include <iostream>
 
 using namespace std;
