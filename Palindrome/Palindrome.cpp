@@ -3,6 +3,18 @@
 
 using namespace std;
 
+bool checkIfPalindrome(char input[80], int half, int length)
+{
+  cout << "A" << input << endl;
+  for(int i = 0; i < half; i++) {
+    if (input[i] != input[length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+  
+}
+
 int main()
 {
 
@@ -11,17 +23,16 @@ int main()
   cin.get(input, 80);
   cin.get();
   int length = strlen(input);
-  char revInput[length];
-  cout << "input: " << input << endl;
-  for(int i = 0; i < length; i++) {
-    revInput[length - i - 1] = input[i];
+  int half = length/2;
+  if(length%2 == 1) {
+    half++;
   }
-  cout << "input: " << input << endl;
-  revInput[length] = '\0';
-  if(strcmp(input, revInput) == 0) {
+  bool isPalindrome = checkIfPalindrome(input, half, length);
+  if(isPalindrome) {
     cout << "It is a palindrome" << endl;
   }
-  cout << "input: " << input << endl;
-  cout << "rev: " << revInput << endl;
+  else {
+    cout << "It is not a palindrome" << endl;
+  }
   return 0;
 }
