@@ -16,7 +16,7 @@ const int O = 2;
 bool checkValidAndPlace(int board[][3], char* position, int turn);
 bool checkWin(int board[][3], int turn);
 bool checkDraw(int board[][3]);
-void drawBoard(int board[][3], int draws, int xWins, int oWins);
+void drawBoard(int board[][3], int draws, int xWins, int oWins, int turn);
 void resetBoard(int board[][3]);
 
 //Main Method
@@ -32,7 +32,7 @@ int main()
   }
   bool playing = true;
   int turn = X;
-  drawBoard(board, 0, 0, 0);
+  drawBoard(board, 0, 0, 0, turn);
   //Loop for playing the game
   bool gameGoing = true;
   int xWins = 0;
@@ -45,20 +45,16 @@ int main()
     //Loop for individual tictactoe games
     while(playing) {
       //Prints out whose turn it is and what needs to happen
-      if (turn == X) {
-	cout << "It is X's turn. Enter a letter followed by a number for the row and column you want to put your piece in" << endl;
-      }
-      else {
-	cout << "It is O's turn. Enter a letter followed by a number for the row and column you want to put your piece in" << endl;
-      }
+      cout << "Enter Spot for Piece: ";
       cin >> input;
+      cout << endl;
       //Checks if the input is valid
       if(checkValidAndPlace(board, input, turn)) {
 	board[input[0] - 'a'][input[1] - '1'] = turn;
 	//If X's turn, checks if the game is won and switches turns
 	if(turn == X) {
 	  if(checkWin(board, turn)) {
-	    cout << "X won the game. The final board is as follows" << endl;
+	    cout << "X won the game. The final board is as follows." << endl;
 	    xWins++;
 	    playing = false;
 	  }
@@ -67,7 +63,7 @@ int main()
 	//If O's turn, check if the game is won and switch to X's turn
 	else {
 	  if(checkWin(board, turn)) {
-	    cout << "O won the game. The final board is as follows" << endl;
+	    cout << "O won the game. The final board is as follows." << endl;
 	    oWins++;
 	    playing = false;
 	  }
@@ -75,15 +71,16 @@ int main()
 	}
       }
       //Check if the game is a draw and if it a draw then end the game
-      else if(checkDraw(board)) {
-	cout << "The game is a draw" << endl;
+      if(checkDraw(board)) {
+	cout << "The game is a draw. The final board is as follows." << endl;
 	draws++;
 	playing = false;
       }
       //Draw Board
-      drawBoard(board, draws, xWins, oWins);
+      drawBoard(board, draws, xWins, oWins, turn);
     }
     resetBoard(board);
+    drawBoard(board, draws, xWins, oWins, turn);
   }
 }
 
@@ -96,8 +93,14 @@ void resetBoard(int board[][3]) {
 
 
 //Method for drawing board
-void drawBoard(int board[][3],int draws,int xWins,int oWins) {
+void drawBoard(int board[][3],int draws,int xWins,int oWins, int turn) {
   //Goes through each row
+  if(turn == X) {
+    cout << "X's Turn" << endl;
+  }
+  else{
+    cout << "O's Turn" << endl;
+  }
   cout << "Draws: " << draws << "\tX Wins: " << xWins << "\tO Wins: " << oWins << endl;
   cout << "\t   1\t    2\t    3" << endl;
   for(int i = 0; i < 3; i++) {
