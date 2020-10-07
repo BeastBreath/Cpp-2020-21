@@ -1,9 +1,15 @@
+
 #include <cstring>
 #include <iostream>
 
+#ifndef MEDIA_H
+#define MEDIA_H
+#include "Media.h"
+#endif
+
 using namespace std;
 
-class VideoGames {
+class VideoGames : public Media {
  private:
   float rating;
   char publisher[100];

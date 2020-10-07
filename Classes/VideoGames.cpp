@@ -1,6 +1,10 @@
 #include <cstring>
 #include <iostream>
+
+#ifndef VIDEOGAMES_H
+#define VIDEOGAMES_H
 #include "VideoGames.h"
+#endif
 
 using namespace std;
 
