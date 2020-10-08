@@ -9,6 +9,16 @@
 #include "Videogames.h"
 #endif
 
+#ifndef MUSIC_H
+#define MUSIC_H
+#include "Music.h"
+#endif
+
+#ifndef MOVIES_H
+#define MOVIES_H
+#include "MOVIES.h"
+#endif
+
 void ADD (vector <VideoGames*> VideoGameList);
 
 using namespace std;
