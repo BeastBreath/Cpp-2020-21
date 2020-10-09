@@ -10,13 +10,13 @@
 using namespace std;
 
 class VideoGames : public Media {
- private:
+private:
   float rating;
   char publisher[100];
- public:
+public:
   float getRating();
   void setRating(float rtng);
   char* getPublisher();
-  void setPublisher(char* pblshr);
+  void setPublisher(char* newPublisher);
   
 };

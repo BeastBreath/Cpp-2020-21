@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Movies {
+class Movies : public Media {
  private:
   int duration;
   char director[100];
