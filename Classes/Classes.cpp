@@ -24,25 +24,12 @@
 #include "MOVIES.h"
 #endif
 
-void ADD (vector <Media*> Media);
+void ADD (vector <Media*> MediaList);
+void PRINT(vector <Media*> MediaList);
+//void SEARCH(vector <Media*> MediaList);
+//void DELETE(vector <Media*> MediaList);
 
 using namespace std;
-
-/*int main ()
-{
-  char abcd[5]="abcd";
-  //abcd = "abcd";
-  
-  Media* mptr;
-  VideoGames v;
-  v.setPublisher(abcd);
-  mptr = &v;
-  cout << mptr->getPublisher();
-
-
-}*/
-
-
 
 int main ()
 {
@@ -55,11 +42,12 @@ int main ()
     cin.clear();
     cin.ignore(1000, '\n');
     cout << "INPUT: " << input << endl;
+    
     if (strcmp(input, "ADD") == 0) {
       ADD(MediaList);
     }
     else if (strcmp(input, "PRINT") == 0) {
-      
+      PRINT(MediaList);
     }
     else if (strcmp(input, "SEARCH") == 0) {
       //cout << "Type the title of what you want to search: ";
@@ -76,6 +64,11 @@ int main ()
     }
   }
 }
+
+void PRINT (vector <Media*> MediaList) {
+}
+
+
 
 void ADD (vector <Media*> MediaList)
 {
@@ -107,7 +100,7 @@ void ADD (vector <Media*> MediaList)
     MediaList.push_back(&newVideoGame);
     return;
   }
-  else if(strcmp(input, "MUSIC")) {
+  else if(strcmp(input, "MUSIC") == 0) {
     Music newMusic;
     cout << "What is the title? ";
     cin.get(input, 100);
@@ -132,7 +125,7 @@ void ADD (vector <Media*> MediaList)
     MediaList.push_back(&newMusic);
     return;
   }
-  else if(strcmp(input, "MOVIE")) {
+  else if(strcmp(input, "MOVIE") == 0) {
     Movies newMovie;
     cout << "What is the title? ";
     cin.get(input, 100);

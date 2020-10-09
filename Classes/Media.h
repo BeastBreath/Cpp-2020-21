@@ -14,6 +14,8 @@ public:
   void setYear(int yr);
   char* getTitle();
   void setTitle(char* ttl);
+  void printTitle();
+  void printYear();
   virtual void setPublisher(char* newPublisher);
   virtual char* getPublisher();
   virtual void setRating(float newRating);
@@ -24,4 +26,9 @@ public:
   virtual int setDuration();
   virtual void setDirector(char* newDirector);
   virtual char* getDirector();
+  virtual void printPublisher();
+  virtual void printRating();
+  virtual void printArtist();
+  virtual void printDuration();
+  virtual void printDirector();
 };

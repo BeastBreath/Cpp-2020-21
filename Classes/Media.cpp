@@ -21,6 +21,12 @@ char* Media::getTitle(){
 void Media::setTitle(char* ttl) {
   strcpy(title, ttl);
 }
+void Media::printTitle() {
+  cout << title;
+}
+void Media::printYear() {
+  cout << year;
+}
 void Media::setPublisher(char* newPublisher) {}
 char* Media::getPublisher() {}
 void Media::setRating(float newRating){}
@@ -31,3 +37,8 @@ void Media::setDuration(int newDuration) {}
 int Media::setDuration() {return 1; }
 void Media::setDirector(char* newDirector) {}
 char* Media::getDirector() {}
+void Media::printPublisher();
+void Media::printRating();
+void Media::printArtist();
+void Media::printDuration();
+void Media::printDirector();
