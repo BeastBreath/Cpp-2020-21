@@ -13,10 +13,10 @@
 
 using namespace std;
 
-int Music::getDuration() {
+double Music::getDuration() {
   return duration;
 }
-void Music::setDuration (int newDuration) {
+void Music::setDuration (double newDuration) {
   duration = newDuration;
 }
 char* Music::getPublisher() {
@@ -31,6 +31,14 @@ char* Music::getArtist() {
 void Music::setArtist (char* newArtist) {
   strcpy(artist, newArtist);
 }
-
+void Music::printArtist() {
+  cout << artist;
+}
+void Music::printPublisher() {
+  cout << publisher;
+}
+void Music::printDuration() {
+  cout << duration;
+}
 
 

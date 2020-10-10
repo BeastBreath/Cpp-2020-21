@@ -12,12 +12,15 @@ class Music : public Media
  private:
   char artist[100];
   char publisher[100];
-  int duration;
+  double duration;
  public:
   char* getArtist();
   char* getPublisher();
-  int getDuration();
+  double getDuration();
   void setArtist(char* newArtist);
   void setPublisher(char* newPublisher);
-  void setDuration(int newDuration);
+  void setDuration(double newDuration);
+  void printArtist();
+  void printPublisher();
+  void printDuration();
 };

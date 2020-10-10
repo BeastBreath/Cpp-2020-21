@@ -9,15 +9,18 @@ using namespace std;
 
 class Movies : public Media {
  private:
-  int duration;
+  double duration;
   char director[100];
   float rating;
  public:
-  int getDuration();
+  double getDuration();
   char* getDirector();
   float getRating();
-  void setDuration(int newDuration);
+  void setDuration(double);
   void setDirector(char* newDirector);
   void setRating(float newRating);
+  void printDuration();
+  void printDirector();
+  void printRating();
 
 };

@@ -22,8 +22,8 @@ public:
   virtual float getRating();
   virtual void setArtist(char* newArtist);
   virtual char* getArtist();
-  virtual void setDuration(int newDuration);
-  virtual int setDuration();
+  virtual void setDuration(double newDuration);
+  virtual double setDuration();
   virtual void setDirector(char* newDirector);
   virtual char* getDirector();
   virtual void printPublisher();

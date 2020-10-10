@@ -18,5 +18,6 @@ public:
   void setRating(float rtng);
   char* getPublisher();
   void setPublisher(char* newPublisher);
-  
+  void printRating();
+  void printPublisher();
 };

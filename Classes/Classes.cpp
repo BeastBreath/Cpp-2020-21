@@ -24,8 +24,8 @@
 #include "MOVIES.h"
 #endif
 
-void ADD (vector <Media*> MediaList);
-void PRINT(vector <Media*> MediaList);
+void ADD (vector <Media*>* MediaList);
+void PRINT(vector <Media*>* MediaList);
 //void SEARCH(vector <Media*> MediaList);
 //void DELETE(vector <Media*> MediaList);
 
@@ -44,10 +44,10 @@ int main ()
     cout << "INPUT: " << input << endl;
     
     if (strcmp(input, "ADD") == 0) {
-      ADD(MediaList);
+      ADD(&MediaList);
     }
     else if (strcmp(input, "PRINT") == 0) {
-      PRINT(MediaList);
+      PRINT(&MediaList);
     }
     else if (strcmp(input, "SEARCH") == 0) {
       //cout << "Type the title of what you want to search: ";
@@ -65,16 +65,23 @@ int main ()
   }
 }
 
-void PRINT (vector <Media*> MediaList) {
+void PRINT (vector<Media*>* MediaList) {
+  vector<Media*>:: iterator mlIterator;
+  cout << "HOLA\n";
+  for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+    (*mlIterator)->printTitle();
+    cout << *(*mlIterator)->getTitle() << endl << "asdfasdfasdf\n";
+  }
 }
 
 
 
-void ADD (vector <Media*> MediaList)
+void ADD (vector<Media*>* MediaList)
 {
   char input[100];
   int inputInteger = -1;
   float inputFloat = -1;
+  double inputDouble = -1;
   cout << "What is the type of media you want to add? ";
   cin.get(input, 100);
   cin.clear();
@@ -97,7 +104,9 @@ void ADD (vector <Media*> MediaList)
     cout << "What is the rating? ";
     cin >> inputInteger;
     newVideoGame.setRating(inputInteger);
-    MediaList.push_back(&newVideoGame);
+    MediaList->push_back(&newVideoGame);
+    newVideoGame.printTitle();
+    //(MediaList->begin())->printTitle();
     return;
   }
   else if(strcmp(input, "MUSIC") == 0) {
@@ -120,9 +129,9 @@ void ADD (vector <Media*> MediaList)
     cin >> inputInteger;
     newMusic.setYear(inputInteger);
     cout << "How long (in seconds) is the song? ";
-    cin >> inputInteger;
-    newMusic.setDuration(inputInteger);
-    MediaList.push_back(&newMusic);
+    cin >> inputDouble;
+    newMusic.setDuration(inputDouble);
+    MediaList->push_back(&newMusic);
     return;
   }
   else if(strcmp(input, "MOVIE") == 0) {
@@ -141,12 +150,12 @@ void ADD (vector <Media*> MediaList)
     cin >> inputInteger;
     newMovie.setYear(inputInteger);
     cout << "How long (in minutes) is the movie? ";
-    cin >> inputInteger;
-    newMovie.setDuration(inputInteger);
+    cin >> inputDouble;
+    newMovie.setDuration(inputDouble);
     cout << "What is the rating? ";
     cin >> inputFloat;
     newMovie.setRating(inputFloat);
-    MediaList.push_back(&newMovie);
+    MediaList->push_back(&newMovie);
     return;
   }
   else {

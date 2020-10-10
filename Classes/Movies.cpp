@@ -10,7 +10,7 @@
 #include "Movies.h"
 #endif
 
-int Movies::getDuration() {
+double Movies::getDuration() {
   return duration;
 }
 char* Movies::getDirector() {
@@ -19,7 +19,7 @@ char* Movies::getDirector() {
 float Movies::getRating() {
   return rating;
 }
-void Movies::setDuration(int newDuration){
+void Movies::setDuration(double newDuration){
   duration = newDuration;
 }
 void Movies::setDirector(char* newDirector){
@@ -28,6 +28,12 @@ void Movies::setDirector(char* newDirector){
 void Movies::setRating(float newRating) {
   rating = newRating;
 }
-
-
-
+void Movies::printDuration() {
+  cout << duration;
+}
+void Movies::printDirector() {
+  cout << director;
+}
+void Movies::printRating() {
+  cout << rating;
+}

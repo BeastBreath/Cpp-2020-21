@@ -33,12 +33,12 @@ void Media::setRating(float newRating){}
 float Media::getRating() {return 1; }
 void Media::setArtist(char* newArtist) {}
 char* Media::getArtist() {}
-void Media::setDuration(int newDuration) {}
-int Media::setDuration() {return 1; }
+void Media::setDuration(double newDuration) {}
+double Media::setDuration() {return 1; }
 void Media::setDirector(char* newDirector) {}
 char* Media::getDirector() {}
-void Media::printPublisher();
-void Media::printRating();
-void Media::printArtist();
-void Media::printDuration();
-void Media::printDirector();
+void Media::printPublisher() {}
+void Media::printRating() {}
+void Media::printArtist() {}
+void Media::printDuration() {}
+void Media::printDirector() {}
