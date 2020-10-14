@@ -41,7 +41,6 @@ int main ()
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    cout << "INPUT: " << input << endl;
     
     if (strcmp(input, "ADD") == 0) {
       ADD(&MediaList);
@@ -67,10 +66,9 @@ int main ()
 
 void PRINT (vector<Media*>* MediaList) {
   vector<Media*>:: iterator mlIterator;
-  cout << "HOLA\n";
   for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
     (*mlIterator)->printTitle();
-    cout << *(*mlIterator)->getTitle() << endl << "asdfasdfasdf\n";
+    //cout << *(*mlIterator)->getTitle() << endl << "asdfasdfasdf\n";
   }
 }
 
@@ -87,75 +85,76 @@ void ADD (vector<Media*>* MediaList)
   cin.clear();
   cin.ignore(1000, '\n');
   if((strcmp(input, "VIDEOGAME") == 0) || (strcmp(input, "Videogame") == 0)) {
-    VideoGames newVideoGame;
+    VideoGames* newVideoGame = new VideoGames;
     cout << "What is the title? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    newVideoGame.setTitle(input);
+    newVideoGame->setTitle(input);
     cout << "What is the publishing year? ";
     cin >> inputInteger;
-    newVideoGame.setYear(inputInteger);
+    newVideoGame->setYear(inputInteger);
     cout << "What is the publisher? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    newVideoGame.setPublisher(input);
+    newVideoGame->setPublisher(input);
     cout << "What is the rating? ";
     cin >> inputInteger;
-    newVideoGame.setRating(inputInteger);
-    MediaList->push_back(&newVideoGame);
-    newVideoGame.printTitle();
+    newVideoGame->setRating(inputInteger);
+    MediaList->push_back(newVideoGame);
+    newVideoGame->printTitle();
     //(MediaList->begin())->printTitle();
     return;
   }
   else if(strcmp(input, "MUSIC") == 0) {
-    Music newMusic;
+    Music *newMusic = new Music;
     cout << "What is the title? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    newMusic.setTitle(input);
-    cout << "Who is the artist? ";
+    newMusic->setTitle(input);
+    cout << "Whos is the artist? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    newMusic.setArtist(input);
+    newMusic->setArtist(input);
     cout << "Who is the publisher? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
+    newMusic->setPublisher(input);
     cout << "What year was it published? ";
     cin >> inputInteger;
-    newMusic.setYear(inputInteger);
+    newMusic->setYear(inputInteger);
     cout << "How long (in seconds) is the song? ";
     cin >> inputDouble;
-    newMusic.setDuration(inputDouble);
-    MediaList->push_back(&newMusic);
+    newMusic->setDuration(inputDouble);
+    MediaList->push_back(newMusic);
     return;
   }
   else if(strcmp(input, "MOVIE") == 0) {
-    Movies newMovie;
+    Movies *newMovie = newMovie;
     cout << "What is the title? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    newMovie.setTitle(input);
+    newMovie->setTitle(input);
     cout << "Who is the director? ";
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
-    newMovie.setDirector(input);
+    newMovie->setDirector(input);
     cout << "What year was it released? ";
     cin >> inputInteger;
-    newMovie.setYear(inputInteger);
+    newMovie->setYear(inputInteger);
     cout << "How long (in minutes) is the movie? ";
     cin >> inputDouble;
-    newMovie.setDuration(inputDouble);
+    newMovie->setDuration(inputDouble);
     cout << "What is the rating? ";
     cin >> inputFloat;
-    newMovie.setRating(inputFloat);
-    MediaList->push_back(&newMovie);
+    newMovie->setRating(inputFloat);
+    MediaList->push_back(newMovie);
     return;
   }
   else {
