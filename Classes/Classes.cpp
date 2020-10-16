@@ -24,10 +24,10 @@
 #include "MOVIES.h"
 #endif
 
-void ADD (vector <Media*>* MediaList);
-void PRINT(vector <Media*>* MediaList);
-//void SEARCH(vector <Media*> MediaList);
-//void DELETE(vector <Media*> MediaList);
+void ADD (vector <Media*> *MediaList);
+void PRINT(vector <Media*> *MediaList);
+void SEARCH(vector <Media*> *MediaList);
+void DELETE(vector <Media*> *MediaList);
 
 using namespace std;
 
@@ -51,6 +51,7 @@ int main ()
     else if (strcmp(input, "SEARCH") == 0) {
       //cout << "Type the title of what you want to search: ";
       //cin >> input;
+      SEARCH(&MediaList);
     }
     else if (strcmp(input, "DELETE") == 0) {
       
@@ -59,12 +60,45 @@ int main ()
       programGoing = false;
     }
     else {
-      cout << "Not a valid command. Valid Commands are:\nSEARCH   DELETE   QUIT   ADD\n";
+      cout << "Your input: "<< input << " .Not a valid command. Valid Commands are:\nSEARCH   DELETE   QUIT   ADD\n";
     }
   }
 }
 
-void PRINT (vector<Media*>* MediaList) {
+void SEARCH (vector<Media* > *MediaList) {
+  char input[100];
+  cout << "What do you want to search? T for title and Y for year: ";
+  cin >> input;
+  if(strcmp(input, "T") == 0) {
+    int inputYear = -1;
+    cin >> inputYear;
+    vector<Media*>:: iterator mlIterator;
+    for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+      if (inputYear == (*mlIterator)->getYear()) {
+	(*mlIterator)->printTitle();
+	//cout << *(*mlIterator)->getTitle() << endl << "asdfasdfasdf\n";
+      }
+    }
+  }
+  else if(strcmp(input, "Y") == 0) {
+    cin >> input;
+    vector<Media*>:: iterator mlIterator;
+    for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+      if (input ==(*mlIterator)->getTitle()) {
+	(*mlIterator)->printTitle();
+      }
+    }
+  }
+  else {
+    cout << "Not a valid command. Valid commands are T and Y" << endl;
+    SEARCH(MediaList);
+  }
+}
+
+
+      
+      
+void PRINT (vector<Media*> *MediaList) {
   vector<Media*>:: iterator mlIterator;
   for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
     (*mlIterator)->printTitle();
@@ -74,7 +108,7 @@ void PRINT (vector<Media*>* MediaList) {
 
 
 
-void ADD (vector<Media*>* MediaList)
+void ADD (vector<Media*> *MediaList)
 {
   char input[100];
   int inputInteger = -1;
