@@ -1,4 +1,5 @@
 #include <cstring>
+#include <iostream>
 
 #ifndef MEDIA_H
 #define MEDIA_H
