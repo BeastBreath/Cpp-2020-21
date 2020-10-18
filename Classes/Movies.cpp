@@ -11,6 +11,8 @@
 #include "Movies.h"
 #endif
 
+using namespace std;
+
 double Movies::getDuration() {
   return duration;
 }
