@@ -1,4 +1,5 @@
 #include <cstring>
+#include <iostream>
 
 #ifndef MEDIA_H
 #define MEDIA_H
@@ -16,7 +17,7 @@ class Movies : public Media {
   double getDuration();
   char* getDirector();
   float getRating();
-  void setDuration(double);
+  void setDuration(double newDuration);
   void setDirector(char* newDirector);
   void setRating(float newRating);
   void printDuration();

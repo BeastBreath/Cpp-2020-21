@@ -101,8 +101,8 @@ void SEARCH (vector<Media* > *MediaList) {
 void PRINT (vector<Media*> *MediaList) {
   vector<Media*>:: iterator mlIterator;
   for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
-    (*mlIterator)->printTitle();
-    //cout << *(*mlIterator)->getTitle() << endl << "asdfasdfasdf\n";
+    //(*mlIterator)->printTitle();
+    cout << (*mlIterator)->getTitle() << endl;
   }
 }
 
