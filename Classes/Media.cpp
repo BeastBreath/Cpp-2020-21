@@ -1,3 +1,8 @@
+/*
+Cpp filer for Media class
+Made by Nividh Singh in October 2020
+*/
+
 #include <cstring>
 #include <iostream>
 
