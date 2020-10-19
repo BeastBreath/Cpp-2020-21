@@ -1,3 +1,8 @@
+/*
+Header filer for Videogame class
+Made by Nividh Singh in October 2020
+*/
+
 #include <cstring>
 #include <iostream>
 
