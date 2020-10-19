@@ -1,3 +1,8 @@
+/*
+Header filer for Music class
+Made by Nividh Singh in October 2020
+*/
+
 #include <cstring>
 
 #ifndef MEDIA_H
