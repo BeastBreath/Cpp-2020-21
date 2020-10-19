@@ -28,6 +28,7 @@ void ADD (vector <Media*> *MediaList);
 void PRINT(vector <Media*> *MediaList);
 void SEARCH(vector <Media*> *MediaList);
 void DELETE(vector <Media*> *MediaList);
+void printMedia(Media* med);
 
 using namespace std;
 
@@ -65,6 +66,11 @@ int main ()
   }
 }
 
+void printMedia(Media* med) {
+  //Maybe do this later if I feel like it probably not going to do it though
+}
+
+
 void DELETE (vector<Media* > *MediaList) {
 
   char input[100];
@@ -75,11 +81,18 @@ void DELETE (vector<Media* > *MediaList) {
     int inputYear = -1;
     cin >> inputYear;
     vector<Media*>:: iterator mlIterator;
+    cout << "You are going to be deleting the following: \n";
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       if (inputYear == (*mlIterator)->getYear()) {
         (*mlIterator)->printTitle();
+	cout << endl;
 	counter++;
       }
+    }
+    if(counter == 0) {
+      cout << "Nothing was released in that year. Please try again\n";
+      DELETE(MediaList);
+      return;
     }
     cout << "Are you sure you want to delete these? Y for yes and N for no" << endl;
     char ch;
@@ -101,11 +114,17 @@ void DELETE (vector<Media* > *MediaList) {
   else if(strcmp(input, "T") == 0) {
     cin >> input;
     vector<Media*>:: iterator mlIterator;
+    cout << "You are going to be deleting the following:\n";
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       if (strcmp(input,(*mlIterator)->getTitle()) == 0) {
         (*mlIterator)->printTitle();
 	counter++;
       }
+    }
+    if(counter == 0) {
+      cout << "Nothing matching that title was found. Please try again\n";
+      DELETE(MediaList);
+      return;
     }
     cout << "Are you sure you want to delete these? Y for yes and N for no" << endl;
     char ch;
@@ -129,7 +148,8 @@ void DELETE (vector<Media* > *MediaList) {
     DELETE(MediaList);
     return;
   }
-  }
+  cout << "They have been deleted\n";
+}
 
 void SEARCH (vector<Media* > *MediaList) {
   char input[100];
@@ -195,6 +215,7 @@ void ADD (vector<Media*> *MediaList)
     cin >> inputInteger;
     newVideoGame->setYear(inputInteger);
     cout << "What is the publisher? ";
+    
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');
