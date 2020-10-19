@@ -1,3 +1,8 @@
+/*
+Cpp filer for Movies class
+Made by Nividh Singh in October 2020
+*/
+
 #include <cstring>
 #include <iostream>
 
