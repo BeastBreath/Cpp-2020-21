@@ -44,7 +44,7 @@ int main ()
   vector<Media*> MediaList;//Vector for storing all Media
   char input[100];//Charector array for input
   bool programGoing = true;//Boolean to keep track of if the program is going or not
-//while loop that keeps going until the user types quit
+  //while loop that keeps going until the user types quit
   while (programGoing) {
     cin.get(input, 100);
     cin.clear();
@@ -79,18 +79,18 @@ void printMedia(Media* med) {
 
 //DELETE function
 void DELETE (vector<Media* > *MediaList) {
-
+  
   char input[100];
   cout << "What do you want to delete using? T for title and Y for year: ";
   cin >> input;
   int counter = 0;
-	//If the input is year, the program searches by year
+  //If the input is year, the program searches by year
   if(strcmp(input, "Y") == 0) {
     int inputYear = -1;//Variable for storing input year
     cin >> inputYear;
     vector<Media*>:: iterator mlIterator;//Iterator to go through vector
     cout << "You are going to be deleting the following: \n";
-	  //Loop that goes through everything and prints out the ones that match the year
+    //Loop that goes through everything and prints out the ones that match the year
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       if (inputYear == (*mlIterator)->getYear()) {
         (*mlIterator)->printTitle();
@@ -98,61 +98,61 @@ void DELETE (vector<Media* > *MediaList) {
 	counter++;//This keeps track of how many items matched that year
       }
     }
-	  //If the counter is zero, we ask the user to try again
+    //If the counter is zero, we ask the user to try again
     if(counter == 0 && MediaList->size() != 0) {
       cout << "Nothing was released in that year. Please try again\n";
       DELETE(MediaList);
       return;
     }
-	  else if(counter ==0) {
-	  cout << "You don't have anything stored, please add something first" << endl;
-		  return;
-	  }
+    else if(counter ==0) {
+      cout << "You don't have anything stored, please add something first" << endl;
+      return;
+    }
     cout << "Are you sure you want to delete these? Y for yes and N for no" << endl;
     char ch;
     cin >> ch;
-	  //If user says yes, then we go through the vector again
+    //If user says yes, then we go through the vector again
     if(ch == 'Y' || ch == 'y') {
       //Goes through the vector the same number of times as the number of things that matched that year
       for (int i = 0; i < counter; i++) {
         vector<Media*>::iterator mlIterator;
         int index = 0;
-	      //Goes through vector
+	//Goes through vector
         for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
           index++;
-		//If the input year is the same, then delete that and restart the iterator
+	  //If the input year is the same, then delete that and restart the iterator
           if(inputYear == (*mlIterator)->getYear()) {
             MediaList->erase(mlIterator);
-		  mlIterator = MediaList->end();
+	    mlIterator = MediaList->end();
           }
         }
       }
     }
   }
-	//If the user says title, do the same thing 
+  //If the user says title, do the same thing 
   else if(strcmp(input, "T") == 0) {
     cin >> input;
     vector<Media*>:: iterator mlIterator;
     cout << "You are going to be deleting the following:\n";
-	  //Go through vector
+    //Go through vector
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       //If it matches, that print it out
-	    if (strcmp(input,(*mlIterator)->getTitle()) == 0) {
+      if (strcmp(input,(*mlIterator)->getTitle()) == 0) {
         (*mlIterator)->printTitle();
 	counter++;
       }
     }
-	  //If the counter is zero, we ask the user to try again
+    //If the counter is zero, we ask the user to try again
     if(counter == 0 && MediaList->size() != 0) {
       cout << "Nothing was released in that year. Please try again\n";
       DELETE(MediaList);
       return;
     }
-	  else if(counter ==0) {
-	  cout << "You don't have anything stored, please add something first" << endl;
-		  return;
-	  }
-	  
+    else if(counter ==0) {
+      cout << "You don't have anything stored, please add something first" << endl;
+      return;
+    }
+    
     cout << "Are you sure you want to delete these? Y for yes and N for no" << endl;
     char ch;
     cin >> ch;
@@ -161,13 +161,13 @@ void DELETE (vector<Media* > *MediaList) {
       for (int i = 0; i < counter; i++) {
 	vector<Media*>::iterator mlIterator;
 	int index = 0;
-	      //Go through iterator
+	//Go through iterator
 	for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
 	  index++;
-		//If it matches, then print it out and restart iterator
+	  //If it matches, then print it out and restart iterator
 	  if(strcmp(input, (*mlIterator)->getTitle()) == 0) {
 	    MediaList->erase(mlIterator);
-		  mlIterator = MediaList->end();
+	    mlIterator = MediaList->end();
 	  }
 	}
       }
@@ -186,31 +186,31 @@ void SEARCH (vector<Media* > *MediaList) {
   char input[100];
   cout << "What do you want to search? T for title and Y for year: ";
   cin >> input;
-	//If user says year, then search using year
+  //If user says year, then search using year
   if(strcmp(input, "Y") == 0) {
     int inputYear = -1;
     cin >> inputYear;
     vector<Media*>:: iterator mlIterator;
-	  //Go through the vector
+    //Go through the vector
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       //Print out title if the year matches
-	    if (inputYear == (*mlIterator)->getYear()) {
+      if (inputYear == (*mlIterator)->getYear()) {
 	(*mlIterator)->printTitle();
-		    cout << endl;
+	cout << endl;
 	//cout << *(*mlIterator)->getTitle() << endl << "asdfasdfasdf\n";
       }
     }
   }
-	//If the user said title do the same thing using the title
+  //If the user said title do the same thing using the title
   else if(strcmp(input, "T") == 0) {
     cin >> input;
     vector<Media*>:: iterator mlIterator;
-	  //Go through the vector
+    //Go through the vector
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       //Print out the title if the title matches
-	    if (strcmp(input, (*mlIterator)->getTitle()) == 0) {
+      if (strcmp(input, (*mlIterator)->getTitle()) == 0) {
 	(*mlIterator)->printTitle();
-		    cout << endl;
+	cout << endl;
       }
     }
   }
@@ -224,7 +224,7 @@ void SEARCH (vector<Media* > *MediaList) {
 void PRINT (vector<Media*> *MediaList) {
   vector<Media*>:: iterator mlIterator;
   //Go through the vector and print every title
-	for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+  for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
     //(*mlIterator)->printTitle();
     cout << (*mlIterator)->getTitle() << endl;
   }
@@ -241,8 +241,8 @@ void ADD (vector<Media*> *MediaList)
   cin.get(input, 100);
   cin.clear();
   cin.ignore(1000, '\n');
-	//If the user said they want to add a video game, music, or movie, then go to that if statement
-	//For each of them, the program prompts each of the fields, and then inputs that field into the object
+  //If the user said they want to add a video game, music, or movie, then go to that if statement
+  //For each of them, the program prompts each of the fields, and then inputs that field into the object
   if((strcmp(input, "VIDEOGAME") == 0) || (strcmp(input, "Videogame") == 0)) {
     VideoGames* newVideoGame = new VideoGames;
     cout << "What is the title? ";
