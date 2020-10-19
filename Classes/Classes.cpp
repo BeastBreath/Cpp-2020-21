@@ -54,7 +54,7 @@ int main ()
       SEARCH(&MediaList);
     }
     else if (strcmp(input, "DELETE") == 0) {
-      
+      DELETE(&MediaList);
     }
     else if (strcmp(input, "QUIT") == 0) {
       programGoing = false;
@@ -65,11 +65,77 @@ int main ()
   }
 }
 
+void DELETE (vector<Media* > *MediaList) {
+
+  char input[100];
+  cout << "What do you want to delete using? T for title and Y for year: ";
+  cin >> input;
+  int counter = 0;
+  if(strcmp(input, "Y") == 0) {
+    int inputYear = -1;
+    cin >> inputYear;
+    vector<Media*>:: iterator mlIterator;
+    for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+      if (inputYear == (*mlIterator)->getYear()) {
+        (*mlIterator)->printTitle();
+	counter++;
+      }
+    }
+    cout << "Are you sure you want to delete these? Y for yes and N for no" << endl;
+    char ch;
+    cin >> ch;
+    if(ch == 'Y' || ch == 'y') {
+      //Delete those
+      for (int i = 0; i < counter; i++) {
+        vector<Media*>::iterator mlIterator;
+        int index = 0;
+        for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+          index++;
+          if(inputYear == (*mlIterator)->getYear()) {
+            MediaList->erase(mlIterator);
+          }
+        }
+      }
+    }
+  }
+  else if(strcmp(input, "T") == 0) {
+    cin >> input;
+    vector<Media*>:: iterator mlIterator;
+    for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+      if (strcmp(input,(*mlIterator)->getTitle()) == 0) {
+        (*mlIterator)->printTitle();
+	counter++;
+      }
+    }
+    cout << "Are you sure you want to delete these? Y for yes and N for no" << endl;
+    char ch;
+    cin >> ch;
+    if(ch == 'Y' || ch == 'y') {
+      //Delete those
+      for (int i = 0; i < counter; i++) {
+	vector<Media*>::iterator mlIterator;
+	int index = 0;
+	for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+	  index++;
+	  if(strcmp(input, (*mlIterator)->getTitle()) == 0) {
+	    MediaList->erase(mlIterator);
+	  }
+	}
+      }
+    }
+  }
+  else {
+    cout << "Not a valid command. Valid commands are T and Y" << endl;
+    DELETE(MediaList);
+    return;
+  }
+  }
+
 void SEARCH (vector<Media* > *MediaList) {
   char input[100];
   cout << "What do you want to search? T for title and Y for year: ";
   cin >> input;
-  if(strcmp(input, "T") == 0) {
+  if(strcmp(input, "Y") == 0) {
     int inputYear = -1;
     cin >> inputYear;
     vector<Media*>:: iterator mlIterator;
@@ -80,11 +146,11 @@ void SEARCH (vector<Media* > *MediaList) {
       }
     }
   }
-  else if(strcmp(input, "Y") == 0) {
+  else if(strcmp(input, "T") == 0) {
     cin >> input;
     vector<Media*>:: iterator mlIterator;
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
-      if (input ==(*mlIterator)->getTitle()) {
+      if (strcmp(input, (*mlIterator)->getTitle()) == 0) {
 	(*mlIterator)->printTitle();
       }
     }
@@ -168,7 +234,7 @@ void ADD (vector<Media*> *MediaList)
     return;
   }
   else if(strcmp(input, "MOVIE") == 0) {
-    Movies *newMovie = newMovie;
+    Movies* newMovie = new Movies;
     cout << "What is the title? ";
     cin.get(input, 100);
     cin.clear();
@@ -194,6 +260,6 @@ void ADD (vector<Media*> *MediaList)
   else {
     cout << "The valid catagories of media are:\n";
     cout << "VIDEOGAME   MUSIC   MOVIE\n";
-      
+    ADD(MediaList);
   }
 }
