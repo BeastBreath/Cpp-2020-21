@@ -27,7 +27,7 @@ int main() {
   ADD(firstNode);
   //PRINT(firstNode);
   //DELETE(firstNode);
-  AVERAGE(firstNode);
+  //AVERAGE(firstNode);
 }
 
 
@@ -36,17 +36,17 @@ int main() {
 //..
 
 void ADD(node* firstNode) {
-  char* input = new char();
+  char* input = new char[100];
   int newStudentID;
   float newGPA;
   student* newStudent = new student();
   cout << "What is the student's first name? ";
   cin >> input;
-  //newStudent->setFirstName(input);
+  newStudent->setFirstName(input);
 
   cout << "What is the student's last name? ";
   cin >> input;
-  //newStudent->setLastName(input);
+  newStudent->setLastName(input);
 
   cout << "What is the student ID? ";
   cin >> newStudentID;
@@ -123,7 +123,7 @@ void DELETE(node* firstNode) {
       cout << "Last Name: " << onNode->getNext()->getStudent()->getLastName() << endl;
       cout << "Student ID: " << onNode->getNext()->getStudent()->getStudentID() << endl;
       cout << "GPA: " << onNode->getNext()->getStudent()->getGPA() << endl;
-      char* input = new char();
+      char* input = new char[100];
       cout << "Y for yes and N for no: ";
       cin >> input;
       if (strcmp(input, "Y") == 0) {

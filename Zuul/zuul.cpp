@@ -11,10 +11,12 @@ using namespace std;
 
 char* getFirstWord(char* input);
 char* getSecondWord(char* input);
+int getFirst(char* firstWord);
 
 int main()
 {
-  char* input = new char();
+  cout << "Start" << endl;
+  char* input = new char[101];
   cin.get(input, 100);
   cin.get();
   char* firstWord = new char();
@@ -25,8 +27,26 @@ int main()
   cout << secondWord << endl;
 }
 
+int getFirst(char* firstWord) {
+  if (strcmp(firstWord, "INVENTORY") == 0) {
+    return 0;
+  }
+  else if (strcmp(firstWord, "DROP") == 0) {
+    return 1;
+  }
+  else if (strcmp(firstWord, "PICK") == 0) {
+    return 2;
+  }
+  else if (strcmp(firstWord, "GO") == 0) {
+    return 3;
+  }
+  else if (strcmp(firstWord, "QUIT") == 0) {
+    return 4;
+  }
+}
+
 char* getFirstWord(char* input) {
-  char* firstWord = new char();
+  char* firstWord = new char[100];
   for (int i = 0; i < strlen(input); i++) {
     if(input[i] != ' ') {
       firstWord[i] = input[i];
@@ -41,23 +61,20 @@ char* getFirstWord(char* input) {
 }
 
 char* getSecondWord(char* input) {
-  char* secondWord = new char();
+  char* secondWord = new char[100];
   int i;
   for(i = 0;(input[i] != ' ') && (i < strlen(input)); i++) {
   }
-  cout << "i is " << i << endl;
   for(int count = i + 1; count < strlen(input); count++) {
     if(input[count] != ' ') {
-      secondWord[count] = input[count];
+      secondWord[count - i - 1] = input[count];
     }
     else {
-      secondWord[i+1] = '\0';
-      cout << "I " << secondWord << endl;
+      secondWord[count+1] = '\0';
       return secondWord;
       
     }
   }
   secondWord[strlen(input)] = '\0';
-  cout << "B " << secondWord << endl;
   return secondWord;
 }
