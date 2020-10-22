@@ -17,7 +17,7 @@ class student {
   float getGPA();
   void setGPA(float newGPA);
   int getStudentID();
-  void getStudentID(int newStudentID);
+  void setStudentID(int newStudentID);
   
 };
 
