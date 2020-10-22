@@ -29,6 +29,6 @@ void student::setGPA(float newGPA) {
 int student::getStudentID() {
 
 }
-void student::getStudentID(int newStudentID) {
+void student::setStudentID(int newStudentID) {
   studentID = newStudentID;
 }
