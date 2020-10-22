@@ -46,9 +46,11 @@ int main ()
   bool programGoing = true;//Boolean to keep track of if the program is going or not
   //while loop that keeps going until the user types quit
   while (programGoing) {
-    cin.get(input, 100);
-    cin.clear();
-    cin.ignore(1000, '\n');
+    cout << "asdf\n";
+    cin >> input;
+    //cin.get(input, 100);
+    //cin.get();
+    //cin.ignore(1000, '\n');
     //The following if and else if statements take what the user inputs and calls that function
     if (strcmp(input, "ADD") == 0) {
       ADD(&MediaList);
