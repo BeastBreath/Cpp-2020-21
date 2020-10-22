@@ -12,20 +12,42 @@
 #include "node.h"
 #endif
 
-
+void ADD(node* firstNode);
 
 int main() {
   student newStudent;
   cout << "A\n";
-  node firstNode(&newStudent);
+  node* firstNode = new node(&newStudent);
   cout << "B\n";
-  firstNode.setNext(NULL);
+  firstNode->setNext(NULL);
   cout << "C\n";
   
 }
-/*
+
+
+
 //ADD
 //..
+
+void ADD(node* firstNODE) {
+  char* input = new char();
+  int newStudentID;
+  float newGPA;
+  student* newStudent = new student();
+  cout << "What is the student's first name? ";
+  cin >> input;
+  newStudent->setFirstName(input);
+
+  cout << "What is the student's last name? ";
+  cin >> input;
+  newStudent->setLastName(input);
+
+  cout << "What is the student ID? ";
+  cin >> newStudentID;
+  newStudent->setStudentID(newStudentID);
+}
+
+
 
 //PRINT
 //Go through and print
@@ -41,4 +63,4 @@ int main() {
 //Go through them and add them together
 //Counter to count how many
 //find the average
-*/
+
