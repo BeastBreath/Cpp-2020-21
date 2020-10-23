@@ -2,28 +2,28 @@
 #include<iostream>
 #include<vector>
 
-#ifndef ROOM_H
-#define ROOM_H
+#ifndef ROOMS_H
+#define ROOMS_H
 #include "rooms.h"
 #endif
 
 using namespace std;
 
-void addItem(char* newItem){
+void rooms::addItem(char* newItem){
 
 }
-vector<char*>* getItems(){
+vector<char*>* rooms::getItems(){
   return &items;
 }
-void setTitle(char* newTitle){
+void rooms::setTitle(char* newTitle){
   strcpy(title, newTitle);
 }
-char* getTitle(){
+char* rooms::getTitle(){
   return title;
 }
-void setDescription (char* newDescription){
+void rooms::setDescription (char* newDescription){
   strcpy(description, newDescription);
 }
-char* getDescrition(){
+char* rooms::getDescrition(){
   return description;
 }
