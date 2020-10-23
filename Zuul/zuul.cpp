@@ -1,3 +1,4 @@
+
 #include<cstring>
 #include<iostream>
 #include<vector>
@@ -26,6 +27,11 @@ void GO(personInfo* myInfo);
 
 int main()
 {
+  char* egTitle = new char[100];
+  rooms* sittingRoom1 = new rooms();
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  
   personInfo* myInfo = new personInfo();
   myInfo->inventoryItems = new vector<char*>;
   cout << "Start" << endl;
@@ -39,6 +45,10 @@ int main()
   secondWord = getSecondWord(input);
   //cout << secondWord << endl;
   //INVENTORY(myInfo);
+}
+
+void GO(personInfo* myInfo) {
+  
 }
 
 void PICK(personInfo* myInfo) {
