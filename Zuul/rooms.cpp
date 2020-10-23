@@ -9,21 +9,21 @@
 
 using namespace std;
 
-void /*rooms::*/addItem(char* newItem){
+void addItem(char* newItem){
 
 }
-vector<char*>* rooms::getItems(){
+vector<char*>* getItems(){
   return &items;
 }
-void rooms::setTitle(char* newTitle){
+void setTitle(char* newTitle){
   strcpy(title, newTitle);
 }
-char* rooms::getTitle(){
+char* getTitle(){
   return title;
 }
-void rooms::setDescription (char* newDescription){
+void setDescription (char* newDescription){
   strcpy(description, newDescription);
 }
-char* rooms::getDescrition(){
+char* getDescrition(){
   return description;
 }
