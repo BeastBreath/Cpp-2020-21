@@ -19,6 +19,8 @@ class student {
   int getStudentID();
   void setStudentID(int newStudentID);
   student();
+ student (char* fName, char* lname, float nGPA, int nStudentID);
+ student (float nGPA, int nStudentID);
  ~student();
 };
 
