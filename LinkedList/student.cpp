@@ -34,24 +34,21 @@ void student::setStudentID(int newStudentID) {
 }
 
 student::student() {
-first name = new char[100];
-  last name = new char[100];
+firstName = new char[100];
+  lastName = new char[100];
 }
-student (char* fName, char* lname, float nGPA, int nStudentID) {
+student::student(char* fName, char* lname, float nGPA, int nStudentID) {
 
 first name = new char[100];
   last name = new char[100];
-  
   
   strcpy(firstName, fName);
   strcpy(lastName, lName);
-  
   GPA = nGPA;
   studentID = nStudentID;
-  
-
 }
-student (float nGPA, int nStudentID) {
+
+student::student (float nGPA, int nStudentID) {
 
 first name = new char[100];
   last name = new char[100];
@@ -59,4 +56,6 @@ first name = new char[100];
   GPA = nGPA;
   studentID = nStudentID;
 }
-~student();
+student::~student() {
+
+}
