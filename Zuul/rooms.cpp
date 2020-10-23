@@ -16,7 +16,7 @@ vector<char*>* rooms::getItems(){
   return &items;
 }
 void rooms::setTitle(char* newTitle){
-  strcmp(title, newTitle);
+  strcpy(title, newTitle);
 }
 char* rooms::getTitle(){
   return title;
