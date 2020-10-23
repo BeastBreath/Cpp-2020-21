@@ -16,7 +16,7 @@ void rooms::deleteItem(char* newItem) {
     vector<char*>:: iterator itemsIterator;
    for(itemsIterator = items.begin(); itemsIterator < items.end(); itemsIterator) {
      if(strcmp((*itemsIterator), newItem) == 0) {
-       items->erase(roomIterator);
+       items.erase(itemsIterator);
        return;
      }
    }
