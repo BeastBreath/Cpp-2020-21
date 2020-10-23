@@ -1,6 +1,7 @@
 #include <cstring>
 #include <iostream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -9,7 +10,9 @@ class rooms {
   char title[100];
   char description[1000];
   vector<char*> items;
+ map<char*, room*> directions;
  public:
+ map<char*, room*>* getMap();
   void deleteItem(char* newItem);
   void addItem(char* newItem);
   vector<char*>* getItems();
