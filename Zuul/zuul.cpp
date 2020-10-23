@@ -1,30 +1,85 @@
 #include<cstring>
 #include<iostream>
 #include<vector>
+#include<iterator>
 
-#ifndef ROOM_H
-#define ROOM_H
+#ifndef ROOMS_H
+#define ROOMS_H
 #include "rooms.h"
 #endif
 
 using namespace std;
 
-char* getFirstWord(char* input);
-char* getSecondWord(char* input);
-int getFirst(char* firstWord);
+struct personInfo {
+  rooms* currentRoom = new rooms();
+  vector<char*>* inventoryItems;
+  char* input;
+};
+
+char* getFirstWord(char* input);//Returns first word from the input
+char* getSecondWord(char* input);//Returns second word from the input
+int getFirst(char* firstWord);//Gets a number value for what command the user put for the first word
+void INVENTORY(personInfo* myInfo);//Prints inventory items
+void PICK(personInfo* myInfo);
+void DROP(personInfo* myInfo);
+void GO(personInfo* myInfo);
 
 int main()
 {
+  personInfo* myInfo = new personInfo();
+  myInfo->inventoryItems = new vector<char*>;
   cout << "Start" << endl;
   char* input = new char[101];
-  cin.get(input, 100);
-  cin.get();
+  //cin.get(input, 100);
+  //cin.get();
   char* firstWord = new char();
   firstWord = getFirstWord(input);
-  cout << firstWord << endl;
+  //cout << firstWord << endl;
   char* secondWord = new char();
   secondWord = getSecondWord(input);
-  cout << secondWord << endl;
+  //cout << secondWord << endl;
+  //INVENTORY(myInfo);
+}
+
+void PICK(personInfo* myInfo) {
+  char* item = getSecondWord(myInfo->input);
+  vector<char*>* roomItems = myInfo->currentRoom->getItems();
+  vector<char*>:: iterator roomIterator;
+  cout << "You have the following items: \n";
+  for(roomIterator = roomItems->begin(); roomIterator < roomItems->end(); roomIterator) {
+    if(strcmp((*roomIterator), item) == 0) {
+      myInfo->inventoryItems->push_back(item);
+      myInfo->currentRoom->deleteItem(item);
+      return;
+    }
+  }
+  
+  
+
+}
+
+void DROP(personInfo* myInfo) {
+  char* item = getSecondWord(myInfo->input);
+  vector<char*>* inventoryItems = myInfo->inventoryItems;
+  vector<char*>:: iterator inventoryIterator;
+  for(inventoryIterator = inventoryItems->begin(); inventoryIterator < inventoryItems->end(); inventoryIterator++) {
+    if(strcmp((*inventoryIterator), item) == 0) {
+      myInfo->currentRoom->addItem(item);
+      myInfo->inventoryItems->erase(inventoryIterator);
+      return;
+    }
+  }
+  cout << "Item not found\n";
+}
+
+
+void INVENTORY(personInfo* myInfo) {
+  vector<char*>* inventoryItems = myInfo->inventoryItems;
+  vector<char*>:: iterator inventoryIterator;
+  cout << "You have the following items: \n";
+  for(inventoryIterator = inventoryItems->begin(); inventoryIterator < inventoryItems->end(); inventoryIterator++) {
+    cout << (*inventoryIterator) << endl;
+  }
 }
 
 int getFirst(char* firstWord) {
@@ -43,6 +98,7 @@ int getFirst(char* firstWord) {
   else if (strcmp(firstWord, "QUIT") == 0) {
     return 4;
   }
+  return 5;
 }
 
 char* getFirstWord(char* input) {
