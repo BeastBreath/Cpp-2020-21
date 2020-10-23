@@ -37,7 +37,7 @@ student::student() {
 firstName = new char[100];
   lastName = new char[100];
 }
-student::student(char* fName, char* lname, float nGPA, int nStudentID) {
+student::student(char* fName, char* lName, float nGPA, int nStudentID) {
 
 firstName = new char[100];
   lastName = new char[100];
