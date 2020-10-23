@@ -10,6 +10,7 @@ class rooms {
   char description[1000];
   vector<char*> items;
  public:
+  void deleteItem(char* newItem);
   void addItem(char* newItem);
   vector<char*>* getItems();
   void setTitle(char* newTitle);
