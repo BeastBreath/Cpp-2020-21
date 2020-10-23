@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void rooms::addItem(char* newItem){
+void /*rooms::*/addItem(char* newItem){
 
 }
 vector<char*>* rooms::getItems(){
