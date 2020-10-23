@@ -6,7 +6,7 @@ using namespace std;
 
 class rooms {
  private:
-  chayr title[100];
+  char title[100];
   char description[1000];
   vector<char*> items;
  public:
