@@ -24,6 +24,6 @@ char* rooms::getTitle(){
 void rooms::setDescription (char* newDescription){
   strcpy(description, newDescription);
 }
-char* rooms::setDescrition(){
+char* rooms::getDescrition(){
   return description;
 }
