@@ -10,7 +10,7 @@
 using namespace std;
 
 void rooms::addItem(char* newItem){
-
+  items.push_back(newItem);
 }
 vector<char*>* rooms::getItems(){
   return &items;
