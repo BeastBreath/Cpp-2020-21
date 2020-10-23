@@ -9,6 +9,11 @@
 
 using namespace std;
 
+
+ map<char*, room*>* getMap() {
+ return &directions;
+ }
+
 void rooms::addItem(char* newItem){
   items.push_back(newItem);
 }
