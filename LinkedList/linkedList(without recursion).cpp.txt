@@ -1,7 +1,6 @@
 #include<cstring>
 #include<iostream>
 
-
 #ifndef STUDENT_H
 #define STUDENT_H
 #include "student.h"
@@ -18,7 +17,6 @@ void PRINT(node* firstNode);
 void DELETE(node* firstNode);
 float AVERAGE(node* firstNode);
 
-
 using namespace std;
 
 int main() {
@@ -27,7 +25,7 @@ int main() {
   firstNode->setNext(NULL);
   char* input = new char[100];
   GAME(firstNode, input);
-
+  
   /*
   ADD(firstNode);
   cout << "WORKS" << endl;
@@ -42,14 +40,10 @@ int main() {
   PRINT(firstNode);
   cout << AVERAGE(firstNode) << endl;
   ADD(firstNode);
-
   cout << "WORKS" << endl;
-  
   PRINT(firstNode);
   ADD(firstNode);
-
   cout << "WORKS" << endl;
-
   PRINT(firstNode);
   //DELETE(firstNode);
   //PRINT(firstNode);
@@ -59,7 +53,6 @@ int main() {
   //cout << "Average: " << AVERAGE(firstNode) << endl;
   */
 }
-
 
 void GAME(node* firstNode, char* input) {
   cout << "> ";
@@ -91,16 +84,11 @@ void GAME(node* firstNode, char* input) {
     cout << "Invalid input\n";
     GAME(firstNode, input);
     return;
-  }
-
-
-  
+  }  
 }
-
 
 //ADD
 //..
-
 void ADD(node* firstNode) {
   char* input = new char[100];
   int newStudentID;
@@ -109,15 +97,15 @@ void ADD(node* firstNode) {
   cout << "What is the student's first name? ";
   cin >> input;
   newStudent->setFirstName(input);
-
+  
   cout << "What is the student's last name? ";
   cin >> input;
   newStudent->setLastName(input);
-
+  
   cout << "What is the student ID? ";
   cin >> newStudentID;
   newStudent->setStudentID(newStudentID);
-
+  
   cout << "What is the student GPA? ";
   cin >> newGPA;
   //cout << "E" << endl;
@@ -172,8 +160,6 @@ void ADD(node* firstNode) {
   }
 }
 
-
-
 //PRINT
 //Go through and print
 void PRINT(node* firstNode) {
@@ -191,7 +177,6 @@ void PRINT(node* firstNode) {
   }
   cout << onNode->getStudent()->getFirstName() << "\t" << onNode->getStudent()->getLastName()  << "\t";
   cout << onNode->getStudent()->getStudentID() << "\t" << onNode->getStudent()->getGPA() << "\n";
-  
 }
 
 //DELETE
@@ -226,9 +211,7 @@ void DELETE(node* firstNode) {
     }
     onNode = onNode->getNext();
   }
-  
 }
-
 
 //QUIT
 //Exit program
@@ -256,5 +239,4 @@ float AVERAGE(node* firstNode) {
   count++;
   average = sum/count;
   return average;
-
 }
