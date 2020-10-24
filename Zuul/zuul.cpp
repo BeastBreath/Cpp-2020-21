@@ -28,9 +28,104 @@ void GO(personInfo* myInfo);
 int main()
 {
   char* egTitle = new char[100];
+  char* egDescription = new char[1000];
   rooms* sittingRoom1 = new rooms();
+  rooms* lincolnBedroom = new rooms();
+  rooms* treatyRoom = new rooms();
+  rooms* ovalOffice = new rooms();
+  rooms* livingRoom = new rooms();
+  rooms* masterBedroom = new rooms();
+  rooms* dressingRoom = new rooms();
+  rooms* westSittingHall = new rooms();
+  rooms* centerHall = new rooms();
+  rooms* stairLanding = new rooms();
+  rooms* eastSittingHall = new rooms();
+  rooms* sittingRoom2 = new rooms();
+  rooms* queenBedroom = new rooms();
+  rooms* eastBedroom = new rooms();
+  rooms* westBedroom = new rooms();
+  rooms* diningRoom = new rooms();
+  rooms* kitchen = new rooms();  
+  //Sitting Room
   strcpy(egTitle, "Sitting Room");
   sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  //lincolnBedroom
+  strcpy(egTitle, "Lincoln Bedroom");
+  lincolnBedroom->setTitle(egTitle);
+  strcpy(egDescription, "The Lincoln Bedroom is a bedroom which is part of a guest suite located in the southeast corner of the second floor of the White House in Washington, D.C. The Lincoln Sitting Room makes up the other part of the suite. The room is named for President Abraham Lincoln, who used the room as an office.");
+  lincolnBedroom->setDescription(egDescription);
+  //treatyRoom
+  strcpy(egTitle, "Treaty Room");
+  treatyRoom->setTitle(egTitle);
+  strcpy(egDescription, "Originally part of the offices of the president on the White House's second floor, this room was used by several presidents as an audience or waiting room. It was partitioned near the windows to allow Abraham Lincoln to pass from the Library (Yellow Oval Room) to his office in today's Lincoln Bedroom without encountering anyone.");
+  treatyRoom->setDescription(egDescription);
+  //ovalOffice
+  strcpy(egTitle, "Oval Office");
+  ovalOffice->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  ovalOffice->setDescription(egDescription);
+  
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+  strcpy(egTitle, "Sitting Room");
+  sittingRoom1->setTitle(egTitle);
+  strcpy(egDescription, "This is one of the sitting rooms in the White House");
+  sittingRoom1->setDescription(egDescription);
+
+ 
+  
   
   personInfo* myInfo = new personInfo();
   myInfo->inventoryItems = new vector<char*>;
