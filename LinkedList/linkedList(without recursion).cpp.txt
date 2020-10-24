@@ -1,0 +1,260 @@
+#include<cstring>
+#include<iostream>
+
+
+#ifndef STUDENT_H
+#define STUDENT_H
+#include "student.h"
+#endif
+
+#ifndef NODE_H
+#define NODE_H
+#include "node.h"
+#endif
+
+void GAME(node* firstNode, char* input);
+void ADD(node* firstNode);
+void PRINT(node* firstNode);
+void DELETE(node* firstNode);
+float AVERAGE(node* firstNode);
+
+
+using namespace std;
+
+int main() {
+  student newStudent;
+  node* firstNode = new node(&newStudent);
+  firstNode->setNext(NULL);
+  char* input = new char[100];
+  GAME(firstNode, input);
+
+  /*
+  ADD(firstNode);
+  cout << "WORKS" << endl;
+  PRINT(firstNode);
+  cout << AVERAGE(firstNode) << endl;
+  ADD(firstNode);
+  cout << "WORKS" << endl;
+  PRINT(firstNode);
+  cout << AVERAGE(firstNode) << endl;
+  ADD(firstNode);
+  cout << "WORKS" << endl;
+  PRINT(firstNode);
+  cout << AVERAGE(firstNode) << endl;
+  ADD(firstNode);
+
+  cout << "WORKS" << endl;
+  
+  PRINT(firstNode);
+  ADD(firstNode);
+
+  cout << "WORKS" << endl;
+
+  PRINT(firstNode);
+  //DELETE(firstNode);
+  //PRINT(firstNode);
+  AVERAGE(firstNode);
+  //ADD(firstNode);
+  //PRINT(firstNode);
+  //cout << "Average: " << AVERAGE(firstNode) << endl;
+  */
+}
+
+
+void GAME(node* firstNode, char* input) {
+  cout << "> ";
+  cin >> input;
+  if(strcmp(input, "ADD") == 0) {
+    ADD(firstNode);
+    GAME(firstNode, input);
+    return;
+  }
+  else if(strcmp(input, "PRINT") == 0) {
+    PRINT(firstNode);
+    GAME(firstNode, input);
+    return;
+  }
+  else if(strcmp(input, "DELETE") == 0) {
+    DELETE(firstNode);
+    GAME(firstNode, input);
+    return;
+  }
+  else if((strcmp(input, "AVERAGE") == 0) && AVERAGE(firstNode) != -1) {
+    cout << "The average is: " << AVERAGE(firstNode) << endl;
+    GAME(firstNode, input);
+    return;
+  }
+  else if(strcmp(input, "QUIT") == 0) {
+    return;
+  }
+  else {
+    cout << "Invalid input\n";
+    GAME(firstNode, input);
+    return;
+  }
+
+
+  
+}
+
+
+//ADD
+//..
+
+void ADD(node* firstNode) {
+  char* input = new char[100];
+  int newStudentID;
+  float newGPA;
+  student* newStudent = new student();
+  cout << "What is the student's first name? ";
+  cin >> input;
+  newStudent->setFirstName(input);
+
+  cout << "What is the student's last name? ";
+  cin >> input;
+  newStudent->setLastName(input);
+
+  cout << "What is the student ID? ";
+  cin >> newStudentID;
+  newStudent->setStudentID(newStudentID);
+
+  cout << "What is the student GPA? ";
+  cin >> newGPA;
+  //cout << "E" << endl;
+  newStudent->setGPA(newGPA);
+  //cout << "Aa" << endl;
+  
+  node* thisNode = new node(newStudent);
+  //cout << "Cc" << endl;
+  node* onNode = firstNode;
+  //cout << "Bb" << endl;
+  if(firstNode->getNext() == NULL) {
+    firstNode->setNext(thisNode);
+    thisNode->setNext(NULL);
+    //cout << "D" << endl;
+    return;
+  }
+  else if(firstNode->getNext()->getStudent()->getStudentID() > newStudentID) {
+    //cout << "DD" << endl;
+    thisNode->setNext(firstNode->getNext());
+    firstNode->setNext(thisNode);
+    //cout << "C"<< endl;
+    return;
+  }
+  else {
+    while((onNode->getNext()->getStudent()->getStudentID() < newStudentID)) {
+      onNode = onNode->getNext();
+      //cout << "EE" << endl;
+      if(onNode->getNext() == NULL) {
+	//cout << "FF" << endl;
+     	onNode->setNext(thisNode);
+     	thisNode->setNext(NULL);
+	//cout << "B" <<// endl;
+     	return;
+        } 
+     }
+    // cout << onNode->getNext()->getStudent()->getStudentID() << endl;
+    // cout << thisNode->getStudent()->getStudentID() << endl;
+     if(onNode->getNext()->getStudent()->getStudentID() == newStudentID) {
+    //   cout << "asdf\n";
+       thisNode->setNext(onNode->getNext());
+    //   cout << onNode->getNext()->getStudent()->getFirstName() << endl;
+       onNode->setNext(thisNode);
+    //   cout << onNode->getNext()->getStudent()->getFirstName() << endl;
+    //   cout << thisNode->getNext()->getStudent()->getFirstName() <<endl;
+    //   cout << onNode->getNext()->getNext()->getStudent()->getFirstName() << endl;
+     }
+    
+     onNode->setNext(thisNode);
+     thisNode->setNext(NULL);
+    // cout << "A" << endl;
+    return;
+  }
+}
+
+
+
+//PRINT
+//Go through and print
+void PRINT(node* firstNode) {
+  if(firstNode->getNext() == NULL) {
+  cout << "No students yet!\n";
+    return;
+  }
+  cout << "first\tlast\tID\tGPA\n";
+  node* onNode = firstNode->getNext();
+  while(onNode->getNext() != NULL) {
+    student* onStudent = onNode->getStudent();
+    cout << onStudent->getFirstName() << "\t" << onStudent->getLastName()  << "\t";
+    cout << onStudent->getStudentID() << "\t" << onStudent->getGPA() << "\n";
+    onNode = onNode->getNext();
+  }
+  cout << onNode->getStudent()->getFirstName() << "\t" << onNode->getStudent()->getLastName()  << "\t";
+  cout << onNode->getStudent()->getStudentID() << "\t" << onNode->getStudent()->getGPA() << "\n";
+  
+}
+
+//DELETE
+//Call the destructor
+//Fix previous node to point to next node
+void DELETE(node* firstNode) {
+  int inputStudentID;
+  cout << "What is the studentID you want to search for? ";
+  cin >> inputStudentID;
+  node* onNode = firstNode;
+  if(firstNode->getNext() == NULL) {
+    cout << "No students yet!";
+    return;
+  }
+  while(onNode->getNext() != NULL) {
+    if(onNode->getNext()->getStudent()->getStudentID() == inputStudentID) {
+      cout << "Are you sure you want to delete this student?\n";
+      cout << "First Name: " << onNode->getNext()->getStudent()->getFirstName() << endl;
+      cout << "Last Name: " << onNode->getNext()->getStudent()->getLastName() << endl;
+      cout << "Student ID: " << onNode->getNext()->getStudent()->getStudentID() << endl;
+      cout << "GPA: " << onNode->getNext()->getStudent()->getGPA() << endl;
+      char* input = new char[100];
+      cout << "Y for yes and N for no: ";
+      cin >> input;
+      if (strcmp(input, "Y") == 0) {
+	onNode->setNext(onNode->getNext()->getNext());
+	return;
+      }
+      else{
+	return;
+      }
+    }
+    onNode = onNode->getNext();
+  }
+  
+}
+
+
+//QUIT
+//Exit program
+
+//AVERAGE
+//Go through them and add them together
+//Counter to count how many
+//find the average
+float AVERAGE(node* firstNode) {
+  int sum = 0;
+  int count = 0;
+  float average = 0;
+  if(firstNode->getNext() == NULL) {
+  cout << "No students yet!\n";
+    return -1;
+  }
+  node* onNode = firstNode->getNext();
+  while(onNode->getNext() != NULL) {
+    student* onStudent = onNode->getStudent();
+    sum += onNode->getStudent()->getGPA();
+    count++;
+    onNode = onNode->getNext();
+  }
+  sum+= onNode->getStudent()->getGPA();
+  count++;
+  average = sum/count;
+  return average;
+
+}
