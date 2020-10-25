@@ -32,7 +32,7 @@ void Media::printTitle() {
 void Media::printYear() {
   cout << year;
 }
-Media() {
+Media::Media() {
   NA = new char[5];
 strcpy(NA, "N/A\0");
 }
