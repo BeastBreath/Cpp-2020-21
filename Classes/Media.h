@@ -30,7 +30,7 @@ public:
   virtual void setArtist(char* newArtist);
   virtual char* getArtist();
   virtual void setDuration(double newDuration);
-  virtual double setDuration();
+  virtual double getDuration();
   virtual void setDirector(char* newDirector);
   virtual char* getDirector();
   virtual void printPublisher();
