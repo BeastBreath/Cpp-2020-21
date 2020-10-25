@@ -36,4 +36,5 @@ public:
   virtual void printArtist();
   virtual void printDuration();
   virtual void printDirector();
+  virtual int getType();
 };
