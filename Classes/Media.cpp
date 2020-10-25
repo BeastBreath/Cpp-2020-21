@@ -47,3 +47,4 @@ void Media::printRating() {}
 void Media::printArtist() {}
 void Media::printDuration() {}
 void Media::printDirector() {}
+int Media::getType() {}
