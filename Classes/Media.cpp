@@ -26,6 +26,12 @@ char* Media::getTitle(){
 void Media::setTitle(char* ttl) {
   strcpy(title, ttl);
 }
+void Media::printTitle() {
+  cout << title;
+}
+void Media::printYear() {
+  cout << year;
+}
 Media::Media() {
   //NA = new char[5];
 strcpy(NA, "N/A\0");
