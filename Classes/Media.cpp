@@ -32,14 +32,18 @@ void Media::printTitle() {
 void Media::printYear() {
   cout << year;
 }
+Media() {
+  NA = new char[5];
+strcpy(NA, N/A\0");
+}
 void Media::setPublisher(char* newPublisher) {}
 char* Media::getPublisher() {}
 void Media::setRating(float newRating){}
-float Media::getRating() {return 1; }
+float Media::getRating() {return -1; }
 void Media::setArtist(char* newArtist) {}
 char* Media::getArtist() {}
 void Media::setDuration(double newDuration) {}
-double Media::setDuration() {return 1; }
+double Media::getDuration() {return -1; }
 void Media::setDirector(char* newDirector) {}
 char* Media::getDirector() {}
 void Media::printPublisher() {}
