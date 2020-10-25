@@ -18,6 +18,9 @@ Made by Nividh Singh in October 2020
 
 using namespace std;
 
+int Music::getType() {
+return 2;
+}
 double Music::getDuration() {
   return duration;
 }
