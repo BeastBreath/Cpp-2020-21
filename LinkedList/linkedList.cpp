@@ -7,7 +7,6 @@ Date: 10/22/20
 #include<cstring>
 #include<iostream>
 
-
 #ifndef STUDENT_H
 #define STUDENT_H
 #include "student.h"

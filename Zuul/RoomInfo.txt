@@ -1,0 +1,129 @@
+NEXTROOM
+South Sitting Room
+This is one of the waiting rooms in the White House
+WEST
+Lincoln Bedroom
+NEXTROOM
+Lincoln Bedroom
+The Lincoln Bedroom is a bedroom which is part of a guest suite in the White House. The room is named for President Abraham Lincoln, who used the room as an office.
+EAST
+South Sitting Room
+WEST
+Treaty Room
+NEXTROOM
+Treaty Room
+Originally part of the offices of the president on the White House's second floor, this room was used by several presidents as an audience or waiting room. It was partitioned near the windows to allow Abraham Lincoln to pass from the Library (Yellow Oval Room) to his office in today's Lincoln Bedroom without encountering anyone.
+NORTH
+Stair Landing
+WEST
+Oval Office
+EAST
+Lincoln Bedroom
+NEXTROOM
+Oval Office
+The Oval Office is the formal, working office space of the President of the United States. It is located in the West Wing of the White House.
+EAST
+Treaty Room
+NORTH
+Center Hall
+WEST
+Living Room
+NEXTROOM
+Living Room
+This is a room to chill and have fun
+EAST
+Oval Office
+WEST
+Masterbed Room
+NORTH
+Center Hall
+NEXTROOM
+Masterbed Room
+This is one of the many bedrooms in the white house
+EAST
+Living Room
+WEST
+Dressing Room
+NEXTROOM
+Dressing Room
+This is the Masterbed room's dressing room
+EAST
+Masterbed Room
+NEXTROOM
+West Sitting Hall
+This is one of the The room is entered from the second floor Center Hall on the east side of the room. The room features a large lunette window on the west wall looks out upon the West Colonnade, the West Wing, and the Old Executive Office Building. The room is used by first families as a less formal living room than the Yellow Oval Room.
+NORTH
+Dining Room
+EAST
+Center Hall
+NEXTROOM
+Center Hall
+The Center Hall is a broad central hallway on the second floor of the White House
+NORHTEAST
+East Bedroom
+NORHEWEST
+WestBedroom
+WEST
+West Sitting Hall
+SOUTHWEST
+Living Room
+SOUTHEAST
+Oval Office
+EAST
+Stair Landing
+NEXTROOM
+Stair Landing
+This is the main way to go to the first, third, or fourth floor
+SOUTH
+Treaty Room
+EAST
+East Sitting Hall
+WEST
+Center Hall
+NORTH
+Queen Bedroom
+NEXTROOM
+East Sitting Hall
+The East Sitting Hall is located on the second floor of the White House, home of the President of the United States. First used as a reception room for guests of the president (the Lincoln Bedroom and the Queens' Bedroom were originally offices of the chief executive), it is now a family parlor with access to the east rooms on the second floor.
+WEST
+Stair Landing
+NEXTROOM
+North Sitting Room
+This is one of the waiting rooms in the white house
+WEST
+Queen Bedroom
+NEXTROOM
+Queen Bedroom
+This is one of the bedrooms in the white house
+EAST
+North Sitting Room
+SOUTH
+East Sitting Hall
+NEXTROOM
+East Bedrooom
+This is one of the bedrooms used by the first family
+SOUTH
+Center Hall
+WEST
+West Bedroom
+NEXTROOM
+West Bedroom
+This is one of the bedrooms used by the first family
+EAST
+East Bedroom
+WEST
+Dining Room
+SOUTH
+Center Hall
+NEXTROOM
+Dining Room
+This is the main dining room used by the first family
+WEST
+Kitchen
+SOUTH
+West Sitting Hall
+NEXTROOM
+Kitchen
+This is the kitchen where food is prepared for the first family
+EAST
+Dining Room

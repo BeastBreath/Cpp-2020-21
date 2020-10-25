@@ -1,3 +1,9 @@
+/*
+student cpp file
+By: Nividh Singh
+Date: 10/21/20
+*/
+
 #include <cstring>
 #include <iostream>
 
