@@ -25,7 +25,4 @@ class Music : public Media
   void setArtist(char* newArtist);
   void setPublisher(char* newPublisher);
   void setDuration(double newDuration);
-  void printArtist();
-  void printPublisher();
-  void printDuration();
 };
