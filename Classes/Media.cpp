@@ -34,7 +34,7 @@ void Media::printYear() {
 }
 Media() {
   NA = new char[5];
-strcpy(NA, N/A\0");
+strcpy(NA, "N/A\0");
 }
 void Media::setPublisher(char* newPublisher) {}
 char* Media::getPublisher() {}
