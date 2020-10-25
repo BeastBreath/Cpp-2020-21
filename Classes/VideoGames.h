@@ -24,5 +24,4 @@ public:
   void setPublisher(char* newPublisher);
   void printRating();
   void printPublisher();
-  int getType();
 };
