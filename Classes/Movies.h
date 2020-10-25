@@ -25,7 +25,4 @@ class Movies : public Media {
   void setDuration(double newDuration);
   void setDirector(char* newDirector);
   void setRating(float newRating);
-  void printDuration();
-  void printDirector();
-  void printRating();
 };
