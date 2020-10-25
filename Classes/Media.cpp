@@ -33,7 +33,7 @@ void Media::printYear() {
   cout << year;
 }
 Media::Media() {
-  NA = new char[5];
+  //NA = new char[5];
 strcpy(NA, "N/A\0");
 }
 void Media::setPublisher(char* newPublisher) {}
