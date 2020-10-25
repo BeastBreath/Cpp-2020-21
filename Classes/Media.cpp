@@ -37,15 +37,15 @@ Media::Media() {
 strcpy(NA, "N/A\0");
 }
 void Media::setPublisher(char* newPublisher) {}
-char* Media::getPublisher() {}
+char* Media::getPublisher() {return NA; }
 void Media::setRating(float newRating){}
 float Media::getRating() {return -1; }
 void Media::setArtist(char* newArtist) {}
-char* Media::getArtist() {}
+char* Media::getArtist() {return NA;}
 void Media::setDuration(double newDuration) {}
 double Media::getDuration() {return -1; }
 void Media::setDirector(char* newDirector) {}
-char* Media::getDirector() {}
+char* Media::getDirector() {return NA; }
 void Media::printPublisher() {}
 void Media::printRating() {}
 void Media::printArtist() {}
