@@ -25,9 +25,3 @@ char* VideoGames::getPublisher() {
 void VideoGames::setPublisher (char* pblshr) {
   strcpy(publisher, pblshr);
 }
-void VideoGames::printRating() {
-  cout << rating;
-}
-void VideoGames::printPublisher() {
-  cout << publisher;
-}
