@@ -89,7 +89,7 @@ void DELETE (vector<Media* > *MediaList) {
     //Loop that goes through everything and prints out the ones that match the year
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       if (inputYear == (*mlIterator)->getYear()) {
-        (*mlIterator)->printTitle();
+        //(*mlIterator)->printTitle();
 	cout << endl;
 	counter++;//This keeps track of how many items matched that year
       }
