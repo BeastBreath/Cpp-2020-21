@@ -40,3 +40,8 @@ void Media::setDuration(double newDuration) {}
 double Media::getDuration() {return -1; }
 void Media::setDirector(char* newDirector) {}
 char* Media::getDirector() {return NA; }
+void Media::printPublisher() {}
+void Media::printRating() {}
+void Media::printArtist() {}
+void Media::printDuration() {}
+void Media::printDirector() {}
