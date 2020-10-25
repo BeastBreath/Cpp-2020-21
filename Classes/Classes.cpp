@@ -33,7 +33,6 @@ void ADD (vector <Media*> *MediaList);
 void PRINT(vector <Media*> *MediaList);
 void SEARCH(vector <Media*> *MediaList);
 void DELETE(vector <Media*> *MediaList);
-void printMedia(Media* med);
 
 using namespace std;
 
@@ -46,7 +45,7 @@ int main ()
   bool programGoing = true;//Boolean to keep track of if the program is going or not
   //while loop that keeps going until the user types quit
   while (programGoing) {
-    cout << "asdf\n";
+    cout << "> ";
     cin >> input;
     //cin.get(input, 100);
     //cin.get();
@@ -75,13 +74,8 @@ int main ()
   }
 }
 
-void printMedia(Media* med) {
-  //Maybe do this later if I feel like it probably not going to do it though
-}
-
 //DELETE function
 void DELETE (vector<Media* > *MediaList) {
-  
   char input[100];
   cout << "What do you want to delete using? T for title and Y for year: ";
   cin >> input;
@@ -106,7 +100,7 @@ void DELETE (vector<Media* > *MediaList) {
       DELETE(MediaList);
       return;
     }
-    else if(counter ==0) {
+    else if(counter == 0) {
       cout << "You don't have anything stored, please add something first" << endl;
       return;
     }
@@ -137,10 +131,30 @@ void DELETE (vector<Media* > *MediaList) {
     vector<Media*>:: iterator mlIterator;
     cout << "You are going to be deleting the following:\n";
     //Go through vector
+    //Go through the vector and print every title
+    cout << "Title\tYear\tPblishr\tRating\tArtist\tLength\tDirector\n";
+    
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
       //If it matches, that print it out
       if (strcmp(input,(*mlIterator)->getTitle()) == 0) {
-        (*mlIterator)->printTitle();
+	cout << (*mlIterator)->getTitle() << "\t";
+	cout << (*mlIterator)->getYear() << "\t";
+	cout << (*mlIterator)->getPublisher() << "\t";
+	if((*mlIterator)->getRating() != -1) {
+	  cout << (*mlIterator)->getRating() << "\t";
+	}
+	else {
+	  cout << "N/A\t";
+	}
+	cout << (*mlIterator)->getArtist() << "\t";
+	if((*mlIterator)->getDuration() != -1) {
+	  cout << (*mlIterator)->getDuration() << "\t";
+	}
+	else {
+	  cout << "N/A\t";
+	}
+	cout << (*mlIterator)->getDirector() << "\t";
+	cout << endl;
 	counter++;
       }
     }
@@ -150,7 +164,7 @@ void DELETE (vector<Media* > *MediaList) {
       DELETE(MediaList);
       return;
     }
-    else if(counter ==0) {
+    else if(counter == 0) {
       cout << "You don't have anything stored, please add something first" << endl;
       return;
     }
@@ -174,13 +188,16 @@ void DELETE (vector<Media* > *MediaList) {
 	}
       }
     }
+    else {
+      return;
+    }
+    cout << "The media have been deleted\n";
   }
   else {
     cout << "Not a valid command. Valid commands are T and Y" << endl;
     DELETE(MediaList);
     return;
   }
-  cout << "They have been deleted\n";
 }
 
 //Search Method
@@ -226,9 +243,28 @@ void SEARCH (vector<Media* > *MediaList) {
 void PRINT (vector<Media*> *MediaList) {
   vector<Media*>:: iterator mlIterator;
   //Go through the vector and print every title
+  cout << "Title\tYear\tPblishr\tRating\tArtist\tLength\tDirector\n";
   for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
     //(*mlIterator)->printTitle();
-    cout << (*mlIterator)->getTitle() << endl;
+    cout << (*mlIterator)->getTitle() << "\t";
+    cout << (*mlIterator)->getYear() << "\t";
+    cout << (*mlIterator)->getPublisher() << "\t";
+    if((*mlIterator)->getRating() != -1) {
+      cout << (*mlIterator)->getRating() << "\t";
+    }
+    else {
+      cout << "N/A\t";
+    }
+    cout << (*mlIterator)->getArtist() << "\t";
+    if((*mlIterator)->getDuration() != -1) {
+      cout << (*mlIterator)->getDuration() << "\t";
+    }
+    else {
+      cout << "N/A\t";
+    }
+    cout << (*mlIterator)->getDirector() << "\t";
+    cout << endl;
+    
   }
 }
 
@@ -256,7 +292,6 @@ void ADD (vector<Media*> *MediaList)
     cin >> inputInteger;
     newVideoGame->setYear(inputInteger);
     cout << "What is the publisher? ";
-    
     cin.get(input, 100);
     cin.clear();
     cin.ignore(1000, '\n');

@@ -1,8 +1,8 @@
-
 #include<cstring>
 #include<iostream>
 #include<vector>
 #include<iterator>
+#include<fstream>
 
 #ifndef ROOMS_H
 #define ROOMS_H
@@ -24,15 +24,16 @@ void INVENTORY(personInfo* myInfo);//Prints inventory items
 void PICK(personInfo* myInfo);
 void DROP(personInfo* myInfo);
 void GO(personInfo* myInfo);
+char* getNextLine(char* fileInput, int &index);
 
 int main()
 {
-
-  char title[3][3] = {
-    {'a', 'a', '\0'},
-    {'b', '\0'},
-    {'c', '\0'}
-  };
+  ifstream myFile("RoomInfo.txt", ifstream::in);
+  char* file = new char[myFile.getllg()+2];
+  int index = 0;
+  while(strcmp(getNextLine(char* fileInput)) == 0) {
+    getNextLine(fileInput, index);
+  }
   
   char* egTitle = new char[100];
   rooms* sittingRoom1 = new rooms();
@@ -71,8 +72,6 @@ void PICK(personInfo* myInfo) {
     }
   }
   
-  
-
 }
 
 void DROP(personInfo* myInfo) {
