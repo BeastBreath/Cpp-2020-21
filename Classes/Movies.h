@@ -28,5 +28,4 @@ class Movies : public Media {
   void printDuration();
   void printDirector();
   void printRating();
- int getType();
 };

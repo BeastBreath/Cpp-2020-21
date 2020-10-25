@@ -28,5 +28,4 @@ class Music : public Media
   void printArtist();
   void printPublisher();
   void printDuration();
-  int getType();
 };
