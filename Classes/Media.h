@@ -13,8 +13,10 @@ class Media
 private:
   char title[100];
   int year;
+  char NA[5];
 protected:
 public:
+  Media();
   int getYear();
   void setYear(int yr);
   char* getTitle();
