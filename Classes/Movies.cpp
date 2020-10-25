@@ -36,12 +36,3 @@ void Movies::setDirector(char* newDirector){
 void Movies::setRating(float newRating) {
   rating = newRating;
 }
-void Movies::printDuration() {
-  cout << duration;
-}
-void Movies::printDirector() {
-  cout << director;
-}
-void Movies::printRating() {
-  cout << rating;
-}
