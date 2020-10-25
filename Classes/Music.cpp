@@ -36,4 +36,14 @@ char* Music::getArtist() {
 void Music::setArtist (char* newArtist) {
   strcpy(artist, newArtist);
 }
+void Music::printArtist() {
+  cout << artist;
+}
+void Music::printPublisher() {
+  cout << publisher;
+}
+void Music::printDuration() {
+  cout << duration;
+}
+
 
