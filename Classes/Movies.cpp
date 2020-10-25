@@ -18,6 +18,9 @@ Made by Nividh Singh in October 2020
 
 using namespace std;
 
+int Movies::getType() {
+return 1;
+}
 double Movies::getDuration() {
   return duration;
 }
