@@ -10,7 +10,7 @@
 using namespace std;
 
 
- map<char*, char*>* rooms::getMap() {
+ map<char*, rooms*>* rooms::getMap() {
  return &directions;
  }
 
