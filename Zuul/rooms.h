@@ -12,7 +12,7 @@ class rooms {
   vector<char*> items;
  map<char*, char*> directions;
  public:
- map<char*, rooms*>* getMap();
+ map<char*, char*>* getMap();
   void deleteItem(char* newItem);
   void addItem(char* newItem);
   vector<char*>* getItems();
