@@ -3,6 +3,7 @@
 #include<vector>
 #include<iterator>
 #include<fstream>
+#include <map>
 
 #ifndef ROOMS_H
 #define ROOMS_H
@@ -29,10 +30,36 @@ char* getNextLine(char* fileInput, int &index);
 int main()
 {
   ifstream myFile("RoomInfo.txt", ifstream::in);
-  char* file = new char[myFile.getllg()+2];
+  vector <rooms*> roomList;
+  myFile.seekg (0, myFile.end);
+  int length = myFile.tellg();
+  myFile.seekg (0, myFile.beg);
+  
+  char* file = new char[length];
   int index = 0;
-  while(strcmp(getNextLine(char* fileInput)) == 0) {
-    getNextLine(fileInput, index);
+  char* line = new char[500];
+  myFile.read(file, length);
+  cout << length << endl;
+  while(index < length) {
+    rooms* myRoom = new rooms();
+    strcpy(line, getNextLine(file, index));
+    myRoom->setTitle(line);
+    strcpy(line, getNextLine(file, index));
+    myRoom->setDescription(line);
+    map<char*, char*>* myRoomMap = myRoom->getMap();
+    while((strcmp(line, "NEXTROOM") != 0) && (index < length)) {
+      char* direction = new char[20];
+      char* nextRoom = new char[30];
+      strcpy(direction, getNextLine(file, index));
+      cout << direction << endl;
+      if(strncmp(direction, "NEXTROOM", 8) == 0) {
+	break;
+      }
+      strcpy(nextRoom, getNextLine(file, index));
+      myRoomMap->insert(pair<char*, char*>(direction, nextRoom));
+      cout << nextRoom << endl;
+    }
+    roomList.push_back(myRoom);
   }
   
   char* egTitle = new char[100];
@@ -55,6 +82,45 @@ int main()
   //INVENTORY(myInfo);
 }
 
+char* getNextLine(char* fileInput, int &index) {
+  char* line = new char[500];
+  int count = 0;
+  //cout << "G\n";
+  if(fileInput[index] == '\n') {
+    //cout << "F\n";
+    index++;
+  }
+  /* if(fileInput[index] == 'EOF') {
+    line[0] = 'EOF';
+    line[1] = '\0';
+    return line;
+  }*/
+  //cout << "H\n";
+  if(index +1 == strlen(fileInput)) {
+    //cout << "I\n";
+    line[count] = fileInput[index];
+    index++;
+    line[count] = '\0';
+    return line;
+  }
+  //cout << "J\n";
+  while (fileInput[index] != '\n') {
+    //cout << "K\n";
+    //cout << "K";
+    line[count] = fileInput[index];
+    count++;
+    index++;
+    if(index +1 == strlen(fileInput)) {
+      line[count] = fileInput[index];
+      index++;
+      return line;
+    }
+  }
+  //cout << "L\n";
+  line[count] = '\0';
+  return line;
+}
+
 void GO(personInfo* myInfo) {
   
 }
@@ -73,6 +139,8 @@ void PICK(personInfo* myInfo) {
   }
   
 }
+
+
 
 void DROP(personInfo* myInfo) {
   char* item = getSecondWord(myInfo->input);
