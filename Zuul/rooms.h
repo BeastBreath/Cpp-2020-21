@@ -20,5 +20,5 @@ class rooms {
   void setTitle(char* newTitle);
   char* getTitle();
   void setDescription (char* newDescription);
-  char* getDescrition();
+  char* getDescription();
 };
