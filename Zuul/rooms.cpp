@@ -9,6 +9,10 @@
 
 using namespace std;
 
+rooms () {
+ title = new char[100];
+ description = new char[1000];
+}
 
  map<char*, char*>* rooms::getMap() {
  return &directions;
