@@ -82,16 +82,38 @@ void DELETE (vector<Media* > *MediaList) {
   int counter = 0;
   //If the input is year, the program searches by year
   if(strcmp(input, "Y") == 0) {
-    int inputYear = -1;//Variable for storing input year
+    //
+    int inputYear = -1;
+    cout << "What is the year? ";
     cin >> inputYear;
-    vector<Media*>:: iterator mlIterator;//Iterator to go through vector
-    cout << "You are going to be deleting the following: \n";
-    //Loop that goes through everything and prints out the ones that match the year
+    vector<Media*>:: iterator mlIterator;
+    cout << "You are going to be deleting the following:\n";
+    //Go through vector
+    //Go through the vector and print every title
+    cout << "Title\tYear\tPblishr\tRating\tArtist\tLength\tDirector\n";
+
     for(mlIterator = MediaList->begin(); mlIterator < MediaList->end(); mlIterator++) {
+      //If it matches, that print it out
       if (inputYear == (*mlIterator)->getYear()) {
-        //(*mlIterator)->printTitle();
-	cout << endl;
-	counter++;//This keeps track of how many items matched that year
+        cout << (*mlIterator)->getTitle() << "\t";
+        cout << (*mlIterator)->getYear() << "\t";
+        cout << (*mlIterator)->getPublisher() << "\t";
+        if((*mlIterator)->getRating() != -1) {
+          cout << (*mlIterator)->getRating() << "\t";
+        }
+        else {
+          cout << "N/A\t";
+        }
+        cout << (*mlIterator)->getArtist() << "\t";
+        if((*mlIterator)->getDuration() != -1) {
+          cout << (*mlIterator)->getDuration() << "\t";
+        }
+        else {
+          cout << "N/A\t";
+        }
+        cout << (*mlIterator)->getDirector() << "\t";
+        cout << endl;
+        counter++;
       }
     }
     //If the counter is zero, we ask the user to try again
@@ -127,6 +149,7 @@ void DELETE (vector<Media* > *MediaList) {
   }
   //If the user says title, do the same thing 
   else if(strcmp(input, "T") == 0) {
+    cout << "What is the title? ";
     cin >> input;
     vector<Media*>:: iterator mlIterator;
     cout << "You are going to be deleting the following:\n";
