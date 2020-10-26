@@ -10,7 +10,7 @@ class rooms {
   char title[100];
   char description[1000];
   vector<char*> items;
- map<char*, char*> directions;
+ map<char*, rooms*> directions;
  public:
  map<char*, rooms*>* getMap();
   void deleteItem(char* newItem);
