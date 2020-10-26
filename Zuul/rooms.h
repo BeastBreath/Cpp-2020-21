@@ -7,8 +7,8 @@ using namespace std;
 
 class rooms {
  private:
-  char title[100];
-  char description[1000];
+  char* title;
+  char* description;
   vector<char*> items;
  map<char*, char*> directions;
  public:
