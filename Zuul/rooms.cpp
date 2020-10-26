@@ -9,7 +9,7 @@
 
 using namespace std;
 
-rooms () {
+rooms::rooms () {
  title = new char[100];
  description = new char[1000];
 }
