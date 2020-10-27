@@ -19,6 +19,7 @@ class Music : public Media
   char publisher[100];
   double duration;
  public:
+ ~Music();
   char* getArtist();
   char* getPublisher();
   double getDuration();
