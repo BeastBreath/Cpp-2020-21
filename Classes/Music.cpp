@@ -18,6 +18,10 @@ Made by Nividh Singh in October 2020
 
 using namespace std;
 
+Music::~Music() {
+  delete[] artist;
+  delete[] publisher;
+}
 double Music::getDuration() {
   return duration;
 }
