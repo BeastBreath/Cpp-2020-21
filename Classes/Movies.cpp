@@ -18,6 +18,9 @@ Made by Nividh Singh in October 2020
 
 using namespace std;
 
+Movies::~Movies() {
+delete[] director;
+}
 double Movies::getDuration() {
   return duration;
 }
