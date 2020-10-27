@@ -38,6 +38,7 @@ strcpy(NA, "N/A\0");
 }
 Media::~Media() {
 delete[] NA;
+  delete[] title;
 }
 void Media::setPublisher(char* newPublisher) {}
 char* Media::getPublisher() {return NA; }
