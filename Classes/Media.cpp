@@ -36,6 +36,9 @@ Media::Media() {
   //NA = new char[5];
 strcpy(NA, "N/A\0");
 }
+Media::~Media() {
+delete[] NA;
+}
 void Media::setPublisher(char* newPublisher) {}
 char* Media::getPublisher() {return NA; }
 void Media::setRating(float newRating){}
