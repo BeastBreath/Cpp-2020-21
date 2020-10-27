@@ -18,6 +18,7 @@ private:
   float rating;
   char publisher[100];
 public:
+  ~VideoGames();
   float getRating();
   void setRating(float rtng);
   char* getPublisher();
