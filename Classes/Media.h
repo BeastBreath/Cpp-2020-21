@@ -16,6 +16,7 @@ private:
   char NA[5];
 protected:
 public:
+  ~Media();
   Media();
   int getYear();
   void setYear(int yr);
