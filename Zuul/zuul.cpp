@@ -15,6 +15,7 @@ using namespace std;
 struct personInfo {
   rooms* currentRoom = new rooms();
   vector<char*>* inventoryItems;
+  vector <rooms*>* roomList;
   char* input;
 };
 
@@ -51,62 +52,53 @@ int main()
       char* direction = new char[20];
       char* nextRoom = new char[30];
       strcpy(direction, getNextLine(file, index));
-      cout << direction << endl;
+      //cout << direction << endl;
       if(strncmp(direction, "NEXTROOM", 8) == 0) {
 	break;
       }
       strcpy(nextRoom, getNextLine(file, index));
       myRoomMap->insert(pair<char*, char*>(direction, nextRoom));
-      cout << nextRoom << endl;
+      //cout << nextRoom << endl;
     }
     roomList.push_back(myRoom);
   }
-  
-  char* egTitle = new char[100];
-  rooms* sittingRoom1 = new rooms();
-  strcpy(egTitle, "Sitting Room");
-  sittingRoom1->setTitle(egTitle);
+  /*
+  vector<rooms*>:: iterator mlIterator;
+  for(mlIterator = roomList.begin(); mlIterator < roomList.end(); mlIterator++) {
+    cout << (*mlIterator)->getTitle() << endl;
+    cout << (*mlIterator)-> getDescription() << endl;
+    map<char*, char*>::iterator it;
+    for(it = (*mlIterator)->getMap()->begin(); it != (*mlIterator)->getMap()->end(); it++) {
+      cout << it->first << endl;
+      cout << it->second << endl;
+    }
+  }*/
   
   personInfo* myInfo = new personInfo();
+  myInfo->roomList = &roomList;
   myInfo->inventoryItems = new vector<char*>;
   cout << "Start" << endl;
   char* input = new char[101];
-  //cin.get(input, 100);
-  //cin.get();
   char* firstWord = new char();
   firstWord = getFirstWord(input);
-  //cout << firstWord << endl;
   char* secondWord = new char();
   secondWord = getSecondWord(input);
-  //cout << secondWord << endl;
   //INVENTORY(myInfo);
 }
 
 char* getNextLine(char* fileInput, int &index) {
   char* line = new char[500];
   int count = 0;
-  //cout << "G\n";
   if(fileInput[index] == '\n') {
-    //cout << "F\n";
     index++;
   }
-  /* if(fileInput[index] == 'EOF') {
-    line[0] = 'EOF';
-    line[1] = '\0';
-    return line;
-  }*/
-  //cout << "H\n";
   if(index +1 == strlen(fileInput)) {
-    //cout << "I\n";
     line[count] = fileInput[index];
     index++;
     line[count] = '\0';
     return line;
   }
-  //cout << "J\n";
   while (fileInput[index] != '\n') {
-    //cout << "K\n";
-    //cout << "K";
     line[count] = fileInput[index];
     count++;
     index++;
@@ -116,7 +108,6 @@ char* getNextLine(char* fileInput, int &index) {
       return line;
     }
   }
-  //cout << "L\n";
   line[count] = '\0';
   return line;
 }
