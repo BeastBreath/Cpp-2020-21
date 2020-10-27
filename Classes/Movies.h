@@ -19,6 +19,7 @@ class Movies : public Media {
   char director[100];
   float rating;
  public:
+ ~Movies();
   double getDuration();
   char* getDirector();
   float getRating();
