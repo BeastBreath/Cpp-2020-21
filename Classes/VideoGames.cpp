@@ -13,6 +13,9 @@ Made by Nividh Singh in October 2020
 
 using namespace std;
 
+VideoGames::~VideoGames() {
+delete[] publisher;
+}
 float VideoGames::getRating() {
   return rating;
 }
