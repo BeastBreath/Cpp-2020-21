@@ -16,12 +16,13 @@ struct personInfo {
   rooms* currentRoom = new rooms();
   vector<char*>* inventoryItems;
   vector <rooms*>* roomList;
-  char* input;
+  char* input = new char[100];
 };
 
+bool playGame(personInfo* myInfo);
+rooms* getRoom(char* roomName);
 char* getFirstWord(char* input);//Returns first word from the input
 char* getSecondWord(char* input);//Returns second word from the input
-int getFirst(char* firstWord);//Gets a number value for what command the user put for the first word
 void INVENTORY(personInfo* myInfo);//Prints inventory items
 void PICK(personInfo* myInfo);
 void DROP(personInfo* myInfo);
@@ -84,7 +85,43 @@ int main()
   char* secondWord = new char();
   secondWord = getSecondWord(input);
   //INVENTORY(myInfo);
+  int i = 9;
+  playGame(myInfo);
 }
+
+bool playGame(personInfo* myInfo) {
+  cout << "S\n";
+  char* input = new char[100];
+  cin.get(input, 100);
+  cin.get();
+  strcpy(myInfo->input, input);
+  char* firstWord = new char [100];
+  strcpy(firstWord, getFirstWord(input));
+  if(strcmp(firstWord, "DROP") == 0) {
+    cout << "DROP\n";
+    DROP(myInfo);
+  }
+  if(strcmp(firstWord, "PICK") == 0) {
+    cout << "PICK\n";
+    PICK(myInfo);
+  }
+  if(strcmp(firstWord, "GO") == 0) {
+    cout << "GO\n";
+    GO(myInfo);
+  }
+  if(strcmp(firstWord, "HELP") == 0) {
+    return false;
+  }
+  if(strcmp(firstWord, "QUIT") == 0) {
+    return false;
+  }
+  if(strcmp(firstWord, "INVENTORY") == 0) {
+    cout << "INVENTORY\n";
+    INVENTORY(myInfo);
+  }
+  return true;
+}
+
 
 char* getNextLine(char* fileInput, int &index) {
   char* line = new char[500];
@@ -112,8 +149,10 @@ char* getNextLine(char* fileInput, int &index) {
   return line;
 }
 
+
+
 void GO(personInfo* myInfo) {
-  
+
 }
 
 void PICK(personInfo* myInfo) {
@@ -134,7 +173,9 @@ void PICK(personInfo* myInfo) {
 
 
 void DROP(personInfo* myInfo) {
+  cout << "DD" << endl;
   char* item = getSecondWord(myInfo->input);
+  cout << "D" << endl;
   vector<char*>* inventoryItems = myInfo->inventoryItems;
   vector<char*>:: iterator inventoryIterator;
   for(inventoryIterator = inventoryItems->begin(); inventoryIterator < inventoryItems->end(); inventoryIterator++) {
@@ -157,24 +198,6 @@ void INVENTORY(personInfo* myInfo) {
   }
 }
 
-int getFirst(char* firstWord) {
-  if (strcmp(firstWord, "INVENTORY") == 0) {
-    return 0;
-  }
-  else if (strcmp(firstWord, "DROP") == 0) {
-    return 1;
-  }
-  else if (strcmp(firstWord, "PICK") == 0) {
-    return 2;
-  }
-  else if (strcmp(firstWord, "GO") == 0) {
-    return 3;
-  }
-  else if (strcmp(firstWord, "QUIT") == 0) {
-    return 4;
-  }
-  return 5;
-}
 
 char* getFirstWord(char* input) {
   char* firstWord = new char[100];
