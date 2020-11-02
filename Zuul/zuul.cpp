@@ -17,6 +17,7 @@ struct personInfo {
   vector<char*>* inventoryItems;
   vector <rooms*>* roomList;
   char* input = new char[100];
+  int tasksDone = 0;
 };
 
 bool playGame(personInfo* myInfo);
@@ -28,20 +29,22 @@ void PICK(personInfo* myInfo);
 void DROP(personInfo* myInfo);
 void GO(personInfo* myInfo);
 char* getNextLine(char* fileInput, int &index);
+void HELP(personInfo *myInfo);
 
 int main()
 {
+  cout << "HELLO! Welcome to Zuul. Many things in this game are randomized, so you can't just memorize locations :). You are in the white house" << endl;
+  
   ifstream myFile("RoomInfo.txt", ifstream::in);
   vector <rooms*> roomList;
-  myFile.seekg (0, myFile.end);
+  myFile.seekg(0, myFile.end);
   int length = myFile.tellg();
-  myFile.seekg (0, myFile.beg);
+  myFile.seekg(0, myFile.beg);
   
   char* file = new char[length];
   int index = 0;
   char* line = new char[500];
   myFile.read(file, length);
-  cout << length << endl;
   while(index < length) {
     rooms* myRoom = new rooms();
     strcpy(line, getNextLine(file, index));
@@ -63,34 +66,45 @@ int main()
     }
     roomList.push_back(myRoom);
   }
-  /*
-  vector<rooms*>:: iterator mlIterator;
-  for(mlIterator = roomList.begin(); mlIterator < roomList.end(); mlIterator++) {
-    cout << (*mlIterator)->getTitle() << endl;
-    cout << (*mlIterator)-> getDescription() << endl;
-    map<char*, char*>::iterator it;
-    for(it = (*mlIterator)->getMap()->begin(); it != (*mlIterator)->getMap()->end(); it++) {
-      cout << it->first << endl;
-      cout << it->second << endl;
-    }
-  }*/
+
   
+  ifstream itemFile("Items.txt", ifstream::in);
+  index = 0;
+  itemFile.seekg(0, itemFile.end);
+  length = itemFile.tellg();
+  itemFile.seekg(0, itemFile.beg);
+  char* itemF = new char[length];
+  itemFile.read(itemF, length);
+  srand(time(NULL));
+  while(index < length) {
+    char* item = new char[30];
+    //int randomNumber = rand()%(roomList.size());
+    int randomNumber = rand();
+    cout << randomNumber << endl;
+    strcpy(item, getNextLine(itemF, index));
+    roomList.at(randomNumber%roomList.size())->addItem(item);
+  }
+  int randomNumber = rand()/*%(roomList.size())*/;
+  cout << randomNumber << endl;
   personInfo* myInfo = new personInfo();
   myInfo->roomList = &roomList;
+  myInfo->currentRoom = myInfo->roomList->at(randomNumber%roomList.size());
   myInfo->inventoryItems = new vector<char*>;
-  cout << "Start" << endl;
+
+  
   char* input = new char[101];
   char* firstWord = new char();
   firstWord = getFirstWord(input);
   char* secondWord = new char();
   secondWord = getSecondWord(input);
   //INVENTORY(myInfo);
-  int i = 9;
-  playGame(myInfo);
+  while(true) {
+    playGame(myInfo);
+  }
 }
 
 bool playGame(personInfo* myInfo) {
-  cout << "S\n";
+  cout << "> ";
   char* input = new char[100];
   cin.get(input, 100);
   cin.get();
@@ -101,27 +115,55 @@ bool playGame(personInfo* myInfo) {
     cout << "DROP\n";
     DROP(myInfo);
   }
-  if(strcmp(firstWord, "PICK") == 0) {
+  else if(strcmp(firstWord, "PICK") == 0) {
     cout << "PICK\n";
     PICK(myInfo);
   }
-  if(strcmp(firstWord, "GO") == 0) {
+  else if(strcmp(firstWord, "GO") == 0) {
     cout << "GO\n";
     GO(myInfo);
   }
-  if(strcmp(firstWord, "HELP") == 0) {
+  else if(strcmp(firstWord, "HELP") == 0) {
+    HELP(myInfo);
+  }
+  else if(strcmp(firstWord, "QUIT") == 0) {
     return false;
   }
-  if(strcmp(firstWord, "QUIT") == 0) {
-    return false;
-  }
-  if(strcmp(firstWord, "INVENTORY") == 0) {
+  else if(strcmp(firstWord, "INVENTORY") == 0) {
     cout << "INVENTORY\n";
     INVENTORY(myInfo);
+  }
+  else {
+    cout << "Command not found" << endl;
   }
   return true;
 }
 
+void HELP(personInfo *myInfo) {
+
+  /*vector<rooms*>::iterator it;
+  for (it = myInfo->roomList->begin(); it != myInfo->roomList->end(); it++) {
+    cout << (*it)->getTitle() << endl;
+    }*/
+  
+  
+  cout << "You are in the " << myInfo->currentRoom->getTitle() << endl;
+  map<char*, char*>::iterator it;
+  cout << "The Exits are:\n";
+  for(it = myInfo->currentRoom->getMap()->begin(); it != myInfo->currentRoom->getMap()->end(); it++) {
+    cout << it->first << endl;
+    //cout << it->second << endl;
+  }
+  cout << endl;
+  cout << "The items in this room are:\n";
+  vector<char*>::iterator itemIterator;
+  for (itemIterator = myInfo->currentRoom->getItems()->begin();
+       itemIterator != myInfo->currentRoom->getItems()->end();
+       itemIterator++) {
+    cout << (*itemIterator) << endl;
+  }
+  cout << endl;
+}
 
 char* getNextLine(char* fileInput, int &index) {
   char* line = new char[500];
@@ -149,37 +191,53 @@ char* getNextLine(char* fileInput, int &index) {
   return line;
 }
 
-
-
 void GO(personInfo* myInfo) {
-
+  char* secondWord = getSecondWord(myInfo->input);
+  char* newRoom = new char [30];
+  map<char*, char*>::iterator directionIterator;
+  for(directionIterator = myInfo->currentRoom->getMap()->begin();
+      directionIterator != myInfo->currentRoom->getMap()->end();
+      directionIterator++) {
+    if(strncmp(directionIterator->first, secondWord, 2) == 0) {
+      strcpy(newRoom, directionIterator->second);
+      cout << "ASAD" << endl;
+      cout << newRoom << endl;
+      break;
+    }
+  }
+  vector<rooms*>:: iterator roomIterator;
+  for(roomIterator = myInfo->roomList->begin(); roomIterator < myInfo->roomList->end(); roomIterator++) {
+    if(strncmp((*roomIterator)->getTitle(), newRoom, strlen(newRoom)) == 0) {
+      myInfo->currentRoom = (*roomIterator);
+      cout << myInfo->currentRoom->getTitle() << endl;
+      return;
+    }
+  }
+  cout << "CRY CRY CRY" << endl;
 }
 
 void PICK(personInfo* myInfo) {
   char* item = getSecondWord(myInfo->input);
   vector<char*>* roomItems = myInfo->currentRoom->getItems();
   vector<char*>:: iterator roomIterator;
-  cout << "You have the following items: \n";
   for(roomIterator = roomItems->begin(); roomIterator < roomItems->end(); roomIterator) {
-    if(strcmp((*roomIterator), item) == 0) {
+    cout << *roomIterator << endl;
+    if(strncmp((*roomIterator), item, strlen(item)) == 0) {
       myInfo->inventoryItems->push_back(item);
       myInfo->currentRoom->deleteItem(item);
       return;
     }
   }
-  
 }
 
 
-
 void DROP(personInfo* myInfo) {
-  cout << "DD" << endl;
   char* item = getSecondWord(myInfo->input);
-  cout << "D" << endl;
   vector<char*>* inventoryItems = myInfo->inventoryItems;
   vector<char*>:: iterator inventoryIterator;
   for(inventoryIterator = inventoryItems->begin(); inventoryIterator < inventoryItems->end(); inventoryIterator++) {
-    if(strcmp((*inventoryIterator), item) == 0) {
+    cout << (*inventoryIterator) << endl;
+    if(strncmp((*inventoryIterator), item, strlen(item)) == 0) {
       myInfo->currentRoom->addItem(item);
       myInfo->inventoryItems->erase(inventoryIterator);
       return;
@@ -187,7 +245,6 @@ void DROP(personInfo* myInfo) {
   }
   cout << "Item not found\n";
 }
-
 
 void INVENTORY(personInfo* myInfo) {
   vector<char*>* inventoryItems = myInfo->inventoryItems;
@@ -197,7 +254,6 @@ void INVENTORY(personInfo* myInfo) {
     cout << (*inventoryIterator) << endl;
   }
 }
-
 
 char* getFirstWord(char* input) {
   char* firstWord = new char[100];
@@ -214,6 +270,7 @@ char* getFirstWord(char* input) {
   return firstWord;
 }
 
+/*
 char* getSecondWord(char* input) {
   char* secondWord = new char[100];
   int i;
@@ -226,7 +283,24 @@ char* getSecondWord(char* input) {
     else {
       secondWord[count+1] = '\0';
       return secondWord;
-      
+    }
+  }
+  secondWord[strlen(input)] = '\0';
+  return secondWord;
+}*/
+
+char* getSecondWord(char* input) {
+  char* secondWord = new char[100];
+  int i;
+  for(i = 0;(input[i] != ' ') && (i < strlen(input)); i++) {
+  }
+  for(int count = i + 1; count < strlen(input); count++) {
+    if(input[count] != '\0') {
+      secondWord[count - i - 1] = input[count];
+    }
+    else {
+      secondWord[count+1] = '\0';
+      return secondWord;
     }
   }
   secondWord[strlen(input)] = '\0';
