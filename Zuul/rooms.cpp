@@ -18,7 +18,10 @@ rooms::rooms () {
  title = new char[100];
  description = new char[1000];
 }
-
+rooms::~rooms() {
+ delete[] title;
+ delete description;
+}
  map<char*, char*>* rooms::getMap() {
  return &directions;
  }
