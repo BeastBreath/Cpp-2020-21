@@ -22,9 +22,12 @@ void rooms::addItem(char* newItem){
   items.push_back(newItem);
 }
 void rooms::deleteItem(char* newItem) {
+ cout << "B" << endl;
+ cout << newItem << endl;
     vector<char*>:: iterator itemsIterator;
    for(itemsIterator = items.begin(); itemsIterator != items.end(); itemsIterator) {
-     if(strcmp((*itemsIterator), newItem) == 0) {
+    cout <<  *itemsIterator << endl;
+    if(strncmp((*itemsIterator), newItem, strlen(newItem)) == 0) {
        items.erase(itemsIterator);
        return;
      }
