@@ -23,7 +23,7 @@ void rooms::addItem(char* newItem){
 }
 void rooms::deleteItem(char* newItem) {
     vector<char*>:: iterator itemsIterator;
-   for(itemsIterator = items.begin(); itemsIterator < items.end(); itemsIterator) {
+   for(itemsIterator = items.begin(); itemsIterator != items.end(); itemsIterator) {
      if(strcmp((*itemsIterator), newItem) == 0) {
        items.erase(itemsIterator);
        return;
