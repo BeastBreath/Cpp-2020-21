@@ -14,7 +14,7 @@ class rooms {
  public:
   rooms();
   map<char*, char*>* getMap();
-  void deleteItem(char* newItem);
+  bool deleteItem(char* newItem);
   void addItem(char* newItem);
   vector<char*>* getItems();
   void setTitle(char* newTitle);
