@@ -1,3 +1,8 @@
+/*
+rooms.h file
+Made by Nividh Singh
+October 20th, 2020
+*/
 #include <cstring>
 #include <iostream>
 #include <vector>
@@ -7,18 +12,19 @@ using namespace std;
 
 class rooms {
  private:
-  char* title;
-  char* description;
-  vector<char*> items;
- map<char*, char*> directions;
+  char* title;//Room title
+  char* description;//Room description
+  vector<char*> items;//Items in the room
+ map<char*, char*> directions;//Rooms around that room
  public:
-  rooms();
-  map<char*, char*>* getMap();
-  bool deleteItem(char* newItem);
-  void addItem(char* newItem);
-  vector<char*>* getItems();
-  void setTitle(char* newTitle);
-  char* getTitle();
-  void setDescription (char* newDescription);
-  char* getDescription();
+  rooms();//Constructor
+ ~rooms();//Destructor
+  map<char*, char*>* getMap();//gets the map
+  bool deleteItem(char* newItem);//Deletes an item from the room, and returns if it worked or didn't work
+  void addItem(char* newItem);//Adds an item to the items in a room
+  vector<char*>* getItems();//Returns the items in the room
+  void setTitle(char* newTitle);//Sets title
+  char* getTitle();//Sets description
+  void setDescription (char* newDescription);//Sets description
+  char* getDescription();//Gets discription
 };
