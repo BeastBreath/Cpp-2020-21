@@ -21,17 +21,16 @@ rooms::rooms () {
 void rooms::addItem(char* newItem){
   items.push_back(newItem);
 }
-void rooms::deleteItem(char* newItem) {
- cout << "B" << endl;
- cout << newItem << endl;
+bool rooms::deleteItem(char* newItem) {
     vector<char*>:: iterator itemsIterator;
    for(itemsIterator = items.begin(); itemsIterator != items.end(); itemsIterator) {
-    cout <<  *itemsIterator << endl;
     if(strncmp((*itemsIterator), newItem, strlen(newItem)) == 0) {
        items.erase(itemsIterator);
-       return;
+       return true;
      }
    }
+ cout << "Item Not found" << endl;
+ return false;
 }
 
 vector<char*>* rooms::getItems(){
