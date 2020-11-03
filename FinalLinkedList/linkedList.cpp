@@ -6,9 +6,9 @@ Date: 10/22/20
 
 #include<cstring>
 #include<iostream>
+#include <iomanip>
 
 #include "node.h"
-
 #include "student.h"
 
 
@@ -140,55 +140,6 @@ void ADD(node* currentNode) {
     ADD(currentNode->getNext(), newStudent);
     return;
   }
-  
-  /*
-  The following code is without using recursion, and I couldn't part with it after spending so long on it and not reading the instructions and the caps lock RECURSION :(
-  node* thisNode = new node(newStudent);
-  //cout << "Cc" << endl;
-  node* onNode = firstNode;
-  //cout << "Bb" << endl;
-  if(firstNode->getNext() == NULL) {
-    firstNode->setNext(thisNode);
-    thisNode->setNext(NULL);
-    //cout << "D" << endl;
-    return;
-  }
-  else if(firstNode->getNext()->getStudent()->getStudentID() > newStudentID) {
-    //cout << "DD" << endl;
-    thisNode->setNext(firstNode->getNext());
-    firstNode->setNext(thisNode);
-    //cout << "C"<< endl;
-    return;
-  }
-  else {
-    while((onNode->getNext()->getStudent()->getStudentID() < newStudentID)) {
-      onNode = onNode->getNext();
-      //cout << "EE" << endl;
-      if(onNode->getNext() == NULL) {
-	//cout << "FF" << endl;
-     	onNode->setNext(thisNode);
-     	thisNode->setNext(NULL);
-	//cout << "B" <<// endl;
-     	return;
-        } 
-     }
-    // cout << onNode->getNext()->getStudent()->getStudentID() << endl;
-    // cout << thisNode->getStudent()->getStudentID() << endl;
-     if(onNode->getNext()->getStudent()->getStudentID() == newStudentID) {
-    //   cout << "asdf\n";
-       thisNode->setNext(onNode->getNext());
-    //   cout << onNode->getNext()->getStudent()->getFirstName() << endl;
-       onNode->setNext(thisNode);
-    //   cout << onNode->getNext()->getStudent()->getFirstName() << endl;
-    //   cout << thisNode->getNext()->getStudent()->getFirstName() <<endl;
-    //   cout << onNode->getNext()->getNext()->getStudent()->getFirstName() << endl;
-     }
-    
-     onNode->setNext(thisNode);
-     thisNode->setNext(NULL);
-    // cout << "A" << endl;
-    return;
-    }*/
 }
 
 
@@ -208,7 +159,9 @@ void PRINT(node* currentNode, bool first) {
     return;
   }
   //If it isn't the first itteration and the next one is NULL, then just print out the information from that NODE and return
-  if(currentNode->getNext() == NULL) {
+  if(currentNode->getNext() == NULL) {  
+	std::cout << std::fixed;
+	std::cout << std::setprecision(2);
     cout << currentNode->getStudent()->getFirstName() << "\t" << currentNode->getStudent()->getLastName()  << "\t";
     cout << currentNode->getStudent()->getStudentID() << "\t" << currentNode->getStudent()->getGPA() << "\n";
     return;
@@ -220,23 +173,6 @@ void PRINT(node* currentNode, bool first) {
     PRINT(currentNode->getNext(), false);
     return;
   }
-  /*
-This part doesn't use recursion, but I couldn't part with it so here it is
-if(firstNode->getNext() == NULL) {
-  cout << "No students yet!\n";
-    return;
-  }
-  cout << "first\tlast\tID\tGPA\n";
-  node* onNode = firstNode->getNext();
-  while(onNode->getNext() != NULL) {
-    student* onStudent = onNode->getStudent();
-    cout << onStudent->getFirstName() << "\t" << onStudent->getLastName()  << "\t";
-    cout << onStudent->getStudentID() << "\t" << onStudent->getGPA() << "\n";
-    onNode = onNode->getNext();
-  }
-  cout << onNode->getStudent()->getFirstName() << "\t" << onNode->getStudent()->getLastName()  << "\t";
-  cout << onNode->getStudent()->getStudentID() << "\t" << onNode->getStudent()->getGPA() << "\n";
-  */
 }
 
 //DELETE
